@@ -1,4 +1,16 @@
 (function () {
+  // ── Admin email list (must match phmurt-auth.js) ──────────────────────
+  var SHELL_ADMIN_EMAILS = ['dreverad18@gmail.com'];
+  function _shellIsAdmin() {
+    try {
+      var raw = localStorage.getItem('phmurt_auth_session');
+      var s = raw ? JSON.parse(raw) : null;
+      if (!s) return false;
+      var email = (s.email || '').trim().toLowerCase();
+      return s.isAdmin === true || SHELL_ADMIN_EMAILS.indexOf(email) !== -1;
+    } catch(e) { return false; }
+  }
+
   const SHELL = {
     nav: [
       { href: 'index.html', label: 'Home' },
@@ -17,8 +29,8 @@
         { href: 'campaigns.html', label: 'Campaign Manager' }
       ]},
       { href: 'about.html', label: 'About' },
-      { href: 'my-characters.html', label: 'My Characters' },
-      { href: 'admin.html', label: 'Admin' }
+      { href: 'my-characters.html', label: 'My Characters' }
+      // Admin link is injected dynamically by updateAuthNav()
     ],
     // flat list for mobile menu and backwards compat
     flatNav: [
@@ -32,8 +44,8 @@
       ['character-sheets.html', 'Sheets'],
       ['campaigns.html', 'Campaigns'],
       ['about.html', 'About'],
-      ['my-characters.html', 'My Characters'],
-      ['admin.html', 'Admin']
+      ['my-characters.html', 'My Characters']
+      // Admin link is injected dynamically by updateAuthNav()
     ],
     footerName: 'Phmurt Studios',
     footerCopy: 'Roll Well. Play Weird.'
@@ -198,9 +210,57 @@
 
     return `
       <nav class="ps-nav" role="navigation" aria-label="Main navigation">
-        <div class="ps-nav-links">${links}</div>
+        <div class="ps-nav-links">${links}<a href="admin.html" id="nav-admin-link" style="display:none">Admin</a></div>
         <div class="ps-nav-right">
-          <button class="ps-theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme" onclick="toggleTheme()">☽</button>
+          <div class="ps-dice-wrapper">
+            <button class="ps-dice-btn" title="Roll dice" onclick="this.parentElement.classList.toggle('open'); event.stopPropagation();">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5"/>
+                <line x1="12" y1="2" x2="12" y2="22"/>
+                <line x1="2" y1="8.5" x2="22" y2="8.5"/>
+                <text x="12" y="17" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" font-family="Cinzel">20</text>
+              </svg>
+            </button>
+            <div class="ps-dice-dropdown" onclick="event.stopPropagation();">
+              <div class="ps-dice-title">Roll Dice</div>
+              <div class="ps-dice-grid">
+                <button class="ps-dice-option active" data-die="d4">d4</button>
+                <button class="ps-dice-option" data-die="d6">d6</button>
+                <button class="ps-dice-option" data-die="d8">d8</button>
+                <button class="ps-dice-option" data-die="d10">d10</button>
+                <button class="ps-dice-option" data-die="d12">d12</button>
+                <button class="ps-dice-option" data-die="d20">d20</button>
+                <button class="ps-dice-option" data-die="d100">d100</button>
+                <button class="ps-dice-option" data-die="d2">d2</button>
+              </div>
+              <div class="ps-dice-count-row">
+                <span class="ps-dice-count-label">Count</span>
+                <input type="number" class="ps-dice-count-input" value="1" min="1" max="100" />
+              </div>
+              <div class="ps-dice-modifier-row">
+                <span class="ps-dice-modifier-label">Modifier</span>
+                <input type="text" class="ps-dice-modifier-input" value="+0" placeholder="+0" />
+              </div>
+              <button class="ps-dice-roll-btn" onclick="PhmurtDice.roll()">Roll</button>
+              <div class="ps-dice-result">
+                <div class="ps-dice-result-number">—</div>
+                <div class="ps-dice-result-breakdown"></div>
+              </div>
+            </div>
+          </div>
+          <div class="ps-access-wrapper" id="accessWrapper">
+            <button class="ps-theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme" onclick="toggleTheme()">☽</button>
+            <button class="ps-access-btn" id="accessBtn" type="button" aria-label="Accessibility options" title="Accessibility options">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="8" r="2"/><path d="M8 14l4-2 4 2"/><path d="M10 18l2-4 2 4"/></svg>
+            </button>
+            <div class="ps-access-dropdown">
+              <div class="ps-access-title">Color Vision</div>
+              <button class="ps-access-option" data-cb="none">Standard</button>
+              <button class="ps-access-option" data-cb="protanopia">Protanopia (Red-blind)</button>
+              <button class="ps-access-option" data-cb="deuteranopia">Deuteranopia (Green-blind)</button>
+              <button class="ps-access-option" data-cb="tritanopia">Tritanopia (Blue-blind)</button>
+            </div>
+          </div>
           <div class="nav-auth-wrap">
             <button id="nav-auth-btn" type="button">Sign In</button>
             <div id="nav-user-dropdown"></div>
@@ -212,6 +272,7 @@
       <div class="ps-mobile-menu" id="mobileMenu" aria-hidden="true">
         <button class="ps-mobile-close" id="mobileClose" type="button">✕ Close</button>
         ${mobileLinks}
+        <a href="admin.html" id="mobile-admin-link" style="display:none">Admin</a>
       </div>
     `;
   }
@@ -244,7 +305,7 @@
   }
 
   function syncThemeButton() {
-    const saved = localStorage.getItem('ps-theme') || 'light';
+    const saved = localStorage.getItem('phmurt_theme') || 'dark';
     const btn = document.getElementById('themeToggle');
     if (btn) btn.textContent = (saved === 'light' ? '☀' : '☽');
   }
@@ -320,10 +381,84 @@
     }, { passive: true });
   }
 
+  function _getAuthSession() {
+    /* Prefer PhmurtDB (covers both Supabase and legacy sessions) */
+    if (typeof PhmurtDB !== 'undefined' && PhmurtDB.getSession) {
+      return PhmurtDB.getSession();
+    }
+    /* Fallback: read localStorage directly */
+    try { return JSON.parse(localStorage.getItem('phmurt_auth_session') || 'null'); }
+    catch(e) { return null; }
+  }
+
+  function updateAuthNav() {
+    var btn = document.getElementById('nav-auth-btn');
+    var dd  = document.getElementById('nav-user-dropdown');
+    if (!btn) return;
+
+    var session = _getAuthSession();
+
+    var isAdmin = !!(session && (session.isAdmin === true ||
+      SHELL_ADMIN_EMAILS.indexOf((session.email || '').trim().toLowerCase()) !== -1));
+
+    // ── Show/hide Admin nav links (desktop + mobile) ────────────
+    var adminLink       = document.getElementById('nav-admin-link');
+    var mobileAdminLink = document.getElementById('mobile-admin-link');
+    if (adminLink)       adminLink.style.display       = isAdmin ? '' : 'none';
+    if (mobileAdminLink) mobileAdminLink.style.display = isAdmin ? '' : 'none';
+
+    if (session && session.userId) {
+      // ── Signed in ──────────────────────────────────────────────
+      var display = (session.displayName || session.name || session.email || 'Account').trim();
+      btn.textContent = display.length > 16
+        ? display.split(' ').map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2)
+        : display;
+      btn.title = display;
+      btn.setAttribute('data-signed-in', '1');
+      btn.style.borderColor = 'var(--crimson-border)';
+      btn.style.color       = 'var(--text)';
+
+      if (dd) {
+        dd.innerHTML =
+          '<div style="font-family:Spectral,serif;font-size:12px;color:var(--text-muted);padding:9px 14px 8px;border-bottom:1px solid var(--border-mid);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px;">' + display + '</div>' +
+          '<a href="my-characters.html">My Characters</a>' +
+          '<button id="nav-signout-btn">Sign Out</button>';
+
+        var soBtn = document.getElementById('nav-signout-btn');
+        if (soBtn) {
+          soBtn.addEventListener('click', function() {
+            if (typeof PhmurtDB !== 'undefined' && PhmurtDB.signOut) {
+              PhmurtDB.signOut();
+            } else {
+              localStorage.removeItem('phmurt_auth_session');
+              window.dispatchEvent(new Event('phmurt-auth-change'));
+            }
+            dd.classList.remove('open');
+            if (typeof window.psToast === 'function') window.psToast('Signed out.');
+          });
+        }
+      }
+    } else {
+      // ── Signed out ─────────────────────────────────────────────
+      btn.textContent = 'Sign In';
+      btn.title = '';
+      btn.removeAttribute('data-signed-in');
+      btn.style.borderColor = '';
+      btn.style.color       = '';
+      if (dd) { dd.innerHTML = ''; dd.classList.remove('open'); }
+    }
+  }
+
   function wireAuthButton() {
     const btn = document.getElementById('nav-auth-btn');
     if (!btn) return;
     btn.addEventListener('click', function () {
+      if (btn.getAttribute('data-signed-in')) {
+        // Toggle user dropdown
+        var dd = document.getElementById('nav-user-dropdown');
+        if (dd) dd.classList.toggle('open');
+        return;
+      }
       if (window.PhmurtDB && typeof window.PhmurtDB.openAuth === 'function') {
         window.PhmurtDB.openAuth();
         return;
@@ -447,6 +582,52 @@
     });
   }
 
+  function setupAccessibilityDropdown() {
+    const wrapper = document.getElementById('accessWrapper');
+    const btn = document.getElementById('accessBtn');
+    if (!wrapper || !btn) return;
+
+    // Toggle dropdown on button click
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      wrapper.classList.toggle('open');
+    });
+
+    // Update active state and apply colorblind mode
+    const options = wrapper.querySelectorAll('.ps-access-option');
+    const currentMode = typeof window.getColorblindMode === 'function' ? window.getColorblindMode() : 'none';
+
+    options.forEach(function(option) {
+      const mode = option.getAttribute('data-cb');
+      if (mode === currentMode) {
+        option.classList.add('active');
+      }
+      option.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const selectedMode = this.getAttribute('data-cb');
+
+        // Update active state
+        options.forEach(function(o) { o.classList.remove('active'); });
+        option.classList.add('active');
+
+        // Apply colorblind mode
+        if (typeof window.setColorblindMode === 'function') {
+          window.setColorblindMode(selectedMode);
+        }
+
+        // Close dropdown
+        wrapper.classList.remove('open');
+      });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('#accessWrapper')) {
+        wrapper.classList.remove('open');
+      }
+    });
+  }
+
   window.psToast = function(message, duration) {
     duration = duration || 3000;
     const existing = document.getElementById('ps-toast');
@@ -462,17 +643,109 @@
     }, duration);
   };
 
+  /* ── Page visit tracking ─────────────────────────────────────────────
+     Logs the current page to the Supabase `site_visits` table.
+     Fires after DOMContentLoaded so supabase-config.js has run.
+     Silently skips if Supabase is not configured.                    ── */
+  function trackPageVisit() {
+    try {
+      var sb = (typeof phmurtSupabase !== 'undefined') ? phmurtSupabase : null;
+      if (!sb) return;
+      var page = window.location.pathname.split('/').pop() || 'index.html';
+      var userId = null;
+      try {
+        var raw = localStorage.getItem('phmurt_auth_session');
+        var sess = raw ? JSON.parse(raw) : null;
+        if (sess && sess.userId) userId = sess.userId;
+      } catch(e) {}
+      sb.from('site_visits').insert({ page: page, user_id: userId || null }).then(function() {}).catch(function() {});
+    } catch(e) {}
+  }
+
+  // ── Dice Roller ──
+  window.PhmurtDice = {
+    selectedDie: 'd20',
+    init: function() {
+      // Close dropdown on outside click
+      document.addEventListener('click', function(e) {
+        var wrapper = document.querySelector('.ps-dice-wrapper');
+        if (wrapper && !wrapper.contains(e.target)) {
+          wrapper.classList.remove('open');
+        }
+      });
+      // Die selection
+      document.querySelectorAll('.ps-dice-option').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.ps-dice-option').forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          PhmurtDice.selectedDie = btn.dataset.die;
+        });
+      });
+      // Select d20 by default
+      var d20btn = document.querySelector('.ps-dice-option[data-die="d20"]');
+      if (d20btn) {
+        document.querySelectorAll('.ps-dice-option').forEach(function(b) { b.classList.remove('active'); });
+        d20btn.classList.add('active');
+        PhmurtDice.selectedDie = 'd20';
+      }
+    },
+    roll: function() {
+      var sides = parseInt(PhmurtDice.selectedDie.replace('d', ''));
+      var countEl = document.querySelector('.ps-dice-count-input');
+      var modEl = document.querySelector('.ps-dice-modifier-input');
+      var count = Math.max(1, Math.min(100, parseInt(countEl.value) || 1));
+      var modStr = (modEl.value || '+0').trim();
+      var mod = parseInt(modStr) || 0;
+
+      var rolls = [];
+      var total = 0;
+      for (var i = 0; i < count; i++) {
+        var r = Math.floor(Math.random() * sides) + 1;
+        rolls.push(r);
+        total += r;
+      }
+      total += mod;
+
+      var resultEl = document.querySelector('.ps-dice-result-number');
+      var breakdownEl = document.querySelector('.ps-dice-result-breakdown');
+
+      resultEl.classList.remove('running', 'ps-dice-result-nat20', 'ps-dice-result-nat1');
+      void resultEl.offsetWidth; // trigger reflow
+      resultEl.classList.add('running');
+      resultEl.textContent = total;
+
+      // Nat 20 / Nat 1 highlighting (only for single d20)
+      if (count === 1 && sides === 20) {
+        if (rolls[0] === 20) resultEl.classList.add('ps-dice-result-nat20');
+        else if (rolls[0] === 1) resultEl.classList.add('ps-dice-result-nat1');
+      }
+
+      var breakdown = count + PhmurtDice.selectedDie;
+      if (mod !== 0) breakdown += (mod > 0 ? '+' : '') + mod;
+      if (count > 1) breakdown += ' → [' + rolls.join(', ') + ']';
+      if (mod !== 0 && count > 1) breakdown += ' + ' + mod;
+      breakdownEl.textContent = breakdown;
+    }
+  };
+
   document.addEventListener('DOMContentLoaded', function () {
     ensureShell();
+    updateAuthNav();
     wireAuthButton();
     setupMobileNav();
     setupNavDropdowns();
+    setupAccessibilityDropdown();
     setupPageTransitions();
     setupReveal();
     setupAuthDropdownClose();
+    PhmurtDice.init();
+    window.addEventListener('phmurt-auth-change', updateAuthNav);
 
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(function() {});
     }
+
+    // Track this page visit (fire-and-forget)
+    setTimeout(trackPageVisit, 500);
   });
 })();

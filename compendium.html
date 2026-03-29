@@ -695,6 +695,309 @@
       border-color: var(--crimson-border);
       color: var(--crimson);
     }
+
+    /* ── TOOLTIP & INLINE HELP ────────────────────────────────────── */
+    .hbe-help-icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+      text-align: center;
+      background: var(--crimson);
+      color: #f5f0e8;
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: bold;
+      cursor: help;
+      position: relative;
+      margin-left: 4px;
+      flex-shrink: 0;
+    }
+    .hbe-help-icon:hover::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-card);
+      border: 1px solid var(--crimson-border);
+      color: var(--text-dim);
+      padding: 8px 12px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: normal;
+      white-space: nowrap;
+      z-index: 10000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .hbe-help-block {
+      background: rgba(192,57,43,0.05);
+      border-left: 3px solid var(--crimson);
+      padding: 8px 12px;
+      margin: 8px 0;
+      font-size: 12px;
+      color: var(--text-dim);
+      border-radius: 2px;
+    }
+
+    /* ── LIVE PREVIEW PANEL ────────────────────────────────────────── */
+    .hbe-preview-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 16px;
+      margin-top: 16px;
+      border-radius: 3px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .hbe-preview-title {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--crimson-border);
+      padding-bottom: 6px;
+    }
+    .hbe-stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .hbe-stat-label {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .hbe-stat-value {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ── MULTI-STEP WIZARD ─────────────────────────────────────────── */
+    .hbe-wizard-steps {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+    }
+    .hbe-wizard-step {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .hbe-wizard-step-num {
+      width: 28px;
+      height: 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .hbe-wizard-step.active .hbe-wizard-step-num {
+      background: var(--crimson);
+      border-color: var(--crimson);
+      color: #f5f0e8;
+    }
+    .hbe-wizard-step.complete .hbe-wizard-step-num {
+      background: #27ae60;
+      border-color: #27ae60;
+      color: #f5f0e8;
+    }
+    .hbe-wizard-step-label {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      white-space: nowrap;
+    }
+    .hbe-wizard-step.active .hbe-wizard-step-label {
+      color: var(--crimson);
+      font-weight: 500;
+    }
+    .hbe-breadcrumb {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 16px;
+    }
+
+    /* ── FORM SECTION CONTAINERS ───────────────────────────────────── */
+    .hbe-form-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 600px) {
+      .hbe-form-grid-2col { grid-template-columns: 1fr; }
+    }
+
+    /* ── VALIDATION & GUIDANCE ─────────────────────────────────────── */
+    .hbe-validation-msg {
+      font-size: 11px;
+      padding: 6px 8px;
+      border-radius: 2px;
+      margin-top: 4px;
+    }
+    .hbe-validation-warning {
+      background: rgba(230,126,34,0.1);
+      border: 1px solid #e67e22;
+      color: #e67e22;
+    }
+    .hbe-validation-info {
+      background: rgba(41,128,185,0.1);
+      border: 1px solid #2980b9;
+      color: #2980b9;
+    }
+    .hbe-validation-success {
+      background: rgba(39,174,96,0.1);
+      border: 1px solid #27ae60;
+      color: #27ae60;
+    }
+
+    /* ── TEMPLATE PRESET SELECTOR ──────────────────────────────────── */
+    .hbe-preset-group {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .hbe-preset-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 7px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      border-radius: 2px;
+    }
+    .hbe-preset-btn:hover {
+      border-color: var(--crimson-border);
+      color: var(--text);
+      background: var(--bg-card);
+    }
+    .hbe-preset-btn.active {
+      background: var(--crimson);
+      border-color: var(--crimson);
+      color: #f5f0e8;
+    }
+
+    /* ── SPELL CARD STYLES ────────────────────────────────────────── */
+    .spell-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 16px;
+      border-left: 4px solid var(--crimson);
+      margin-bottom: 12px;
+    }
+    .spell-card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .spell-card-meta {
+      font-size: 11px;
+      color: var(--text-faint);
+      margin-bottom: 8px;
+    }
+    .spell-tag {
+      display: inline-block;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      font-size: 7px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-right: 4px;
+      margin-bottom: 4px;
+      border-radius: 2px;
+    }
+    .spell-description {
+      font-family: 'Spectral', serif;
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+
+    /* ── SMOOTH ANIMATIONS ────────────────────────────────────────── */
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .hbe-animated-panel {
+      animation: slideInUp 0.2s ease-out;
+    }
+
+    /* ── UNSAVED CHANGES WARNING ───────────────────────────────────── */
+    .hbe-unsaved-banner {
+      background: rgba(192,57,43,0.1);
+      border: 1px solid var(--crimson-border);
+      padding: 10px 12px;
+      margin-bottom: 16px;
+      border-radius: 3px;
+      font-size: 11px;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hbe-unsaved-banner::before {
+      content: "⚠";
+      font-size: 14px;
+      color: var(--crimson);
+      flex-shrink: 0;
+    }
+
+    /* ── RICH TEXT EDITOR MOCK ────────────────────────────────────── */
+    .hbe-textarea-enhanced {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Spectral', serif;
+      font-size: 14px;
+      padding: 8px 10px;
+      box-sizing: border-box;
+      resize: vertical;
+      min-height: 80px;
+    }
+    .hbe-textarea-enhanced:focus {
+      outline: none;
+      border-color: var(--crimson-border);
+      background: var(--bg);
+    }
   </style>
 </head>
 <body data-nav-active="Content" data-footer-copy="Roll Well. Play Weird.">
@@ -738,6 +1041,12 @@
       </button>
 
       <hr class="cmp-sidebar-divider" />
+      <div class="cmp-sidebar-title" style="color:#2980b9;">Spellcasting</div>
+      <button class="cmp-create-btn spell"   onclick="openSpellCreatorModal()">
+        <span class="cmp-btn-icon" style="color:#2980b9;">⚡</span>Create Spell
+      </button>
+
+      <hr class="cmp-sidebar-divider" />
       <div id="cmp-mine-count" style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-faint);">
         Loading your collection&hellip;
       </div>
@@ -778,6 +1087,7 @@
         <button class="cmp-type-btn" data-tf="background">Backgrounds</button>
         <button class="cmp-type-btn" data-tf="subclass">Subclasses</button>
         <button class="cmp-type-btn" data-tf="item">Items</button>
+        <button class="cmp-type-btn" data-tf="spell">Spells</button>
       </div>
 
       <!-- Tag filters -->
@@ -928,6 +1238,238 @@
       var i = 2;
       while (DND_DATA.itemDB[base + '-' + i]) i++;
       return base + '-' + i;
+    }
+
+    // ══════════════════════════════════════════════════════════════
+    // SPELL SYSTEM
+    // ══════════════════════════════════════════════════════════════
+    var SPELL_KEY = 'phmurt_homebrew_spells';
+    var _homebrewSpells = {};
+    var _spellModalMode = 'create';
+    var _spellEditId = null;
+
+    function loadHomebrewSpells() {
+      try {
+        var raw = localStorage.getItem(SPELL_KEY);
+        if (!raw) return;
+        _homebrewSpells = JSON.parse(raw) || {};
+      } catch(e) {
+        console.warn('Spell load error:', e);
+      }
+    }
+
+    function saveHomebrewSpells() {
+      try {
+        localStorage.setItem(SPELL_KEY, JSON.stringify(_homebrewSpells));
+      } catch(e) {
+        console.warn('Spell save error:', e);
+      }
+    }
+
+    function spellId(name) {
+      var base = 'sp-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      if (!_homebrewSpells[base]) return base;
+      var i = 2;
+      while (_homebrewSpells[base + '-' + i]) i++;
+      return base + '-' + i;
+    }
+
+    function openSpellCreatorModal(editId) {
+      _spellModalMode = editId ? 'edit' : 'create';
+      _spellEditId = editId || null;
+
+      var existing = editId ? _homebrewSpells[editId] : null;
+      var titleText = editId ? 'Edit Spell' : 'Create Spell';
+
+      var schoolOpts = ['Abjuration','Conjuration','Divination','Enchantment','Evocation','Illusion','Necromancy','Transmutation'];
+      var castTimeOpts = ['1 action','1 bonus action','1 reaction','1 minute','10 minutes','1 hour'];
+      var rangeOpts = ['Self','Touch','30 feet','60 feet','90 feet','120 feet','300 feet','1 mile'];
+      var durationOpts = ['Instantaneous','Concentration, up to 1 minute','Concentration, up to 10 minutes','Concentration, up to 1 hour','Concentration, up to 8 hours','1 minute','10 minutes','1 hour','8 hours','24 hours'];
+      var classes = ['Bard','Cleric','Druid','Paladin','Ranger','Sorcerer','Warlock','Wizard'];
+      var damageTypes = ['Acid','Bludgeoning','Cold','Fire','Force','Lightning','Necrotic','Piercing','Poison','Psychic','Radiant','Slashing','Thunder'];
+
+      var html = '<div id="spell-overlay" onclick="if(event.target===this)closeSpellModal()" '
+        + 'style="position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:4000;display:flex;align-items:flex-start;justify-content:center;padding:20px;box-sizing:border-box;overflow-y:auto;">'
+        + '<div style="background:var(--bg);border:1px solid var(--border);width:100%;max-width:700px;padding:28px;margin:auto;">'
+
+        + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">'
+        + '<div style="font-family:Cinzel,serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--crimson);">' + titleText + '</div>'
+        + '<button onclick="closeSpellModal()" style="background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:22px;line-height:1;">×</button>'
+        + '</div>'
+
+        + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">'
+        + '<div><label style="display:block;font-family:Cinzel,serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px;">Spell Name *</label>'
+        + '<input id="sp-name" type="text" value="' + (existing ? existing.name : '').replace(/"/g,'&quot;') + '" placeholder="e.g. Fireball" style="width:100%;background:var(--bg-card);border:1px solid var(--border);color:var(--text);font-family:Spectral,Georgia,serif;font-size:14px;padding:8px 10px;box-sizing:border-box;"/>'
+        + '</div>'
+        + '<div><label style="display:block;font-family:Cinzel,serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px;">Level (0-9) *</label>'
+        + '<input id="sp-level" type="number" min="0" max="9" value="' + (existing && existing.level !== undefined ? existing.level : '1') + '" style="width:100%;background:var(--bg-card);border:1px solid var(--border);color:var(--text);font-family:Spectral,Georgia,serif;font-size:14px;padding:8px 10px;box-sizing:border-box;"/>'
+        + '</div>'
+        + '</div>'
+
+        + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">'
+        + '<div><label style="display:block;font-family:Cinzel,serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px;">School *</label>'
+        + '<select id="sp-school" style="width:100%;background:var(--bg-card);border:1px solid var(--border);color:var(--text);font-family:Spectral,Georgia,serif;font-size:14px;padding:8px 10px;box-sizing:border-box;">'
+        + schoolOpts.map(function(s) { return '<option value="' + s + '"' + (existing && existing.school === s ? ' selected' : '') + '>' + s + '</option>'; }).join('')
+        + '</select>'
+        + '</div>'
+        + '<div><label style="display:block;font-family:Cinzel,serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px;">Casting Time *</label>'
+        + '<input id="sp-castingtime" type="text" value="' + (existing ? existing.castingTime : '1 action') + '" placeholder="1 action" style="width:100%;background:var(--bg-card);border:1px solid var(--border);color:var(--text);font-family:Spectral,Georgia,serif;font-size:14px;padding:8px 10px;box-sizing:border-box;"/>'
+        + '</div>'
+        + '</div>'
+
+        + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">'
+        + '<div><label style="display:block;font-family:Cinzel,serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px;">Range *</label>'
+        + '<input id="sp-range" type="text" value="' + (existing ? existing.range : 'Self') + '" placeholder="Self, Touch, 60 feet" style="width:100%;background:var(--bg-card);border:1px solid var(--border);color:var(--text);font-family:Spectral,Georgia,serif;font-size:14px;padding:8px 10px;box-sizing:border-box;"/>'
+        + '</div>'
+        + '<div><label style="display:block;font-family:Cinzel,serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px;">Duration *</label>'
+        + '<input id="sp-duration" type="text" value="' + (existing ? existing.duration : 'Instantaneous') + '" placeholder="Instantaneous" style="width:100%;background:var(--bg-card);border:1px solid var(--border);color:var(--text);font-family:Spectral,Georgia,serif;font-size:14px;padding:8px 10px;box-sizing:border-box;"/>'
+        + '</div>'
+        + '</div>'
+
+        + '<div style="margin-bottom:12px;">'
+        + '<label style="display:block;font-family:Cinzel,serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Components *</label>'
+        + '<div style="display:flex;gap:12px;margin-bottom:8px;">';
+
+      ['V','S','M'].forEach(function(c) {
+        var hasComp = existing && existing.components && existing.components.indexOf(c) !== -1;
+        html += '<label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:12px;color:var(--text-muted);">'
+          + '<input type="checkbox" class="sp-comp-cb" value="' + c + '"' + (hasComp ? ' checked' : '') + ' style="width:13px;height:13px;accent-color:var(--crimson);"/>'
+          + (c === 'V' ? 'Verbal' : c === 'S' ? 'Somatic' : 'Material')
+          + '</label>';
+      });
+
+      html += '</div>'
+        + '<div><input id="sp-material" type="text" value="' + (existing ? (existing.materialComponent || '') : '') + '" placeholder="Material components (if M is checked)" style="width:100%;background:var(--bg-card);border:1px solid var(--border);color:var(--text);font-family:Spectral,Georgia,serif;font-size:13px;padding:6px 8px;box-sizing:border-box;"/>'
+        + '</div>'
+        + '</div>'
+
+        + '<div style="margin-bottom:12px;">'
+        + '<label style="display:block;font-family:Cinzel,serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px;">Available to Classes</label>'
+        + '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px;">';
+
+      classes.forEach(function(c) {
+        var hasClass = existing && existing.classes && existing.classes.indexOf(c) !== -1;
+        html += '<label style="display:flex;align-items:center;gap:4px;cursor:pointer;font-size:11px;color:var(--text-muted);">'
+          + '<input type="checkbox" class="sp-class-cb" value="' + c + '"' + (hasClass ? ' checked' : '') + ' style="width:12px;height:12px;accent-color:var(--crimson);"/>'
+          + c
+          + '</label>';
+      });
+
+      html += '</div>'
+        + '</div>'
+
+        + '<div style="margin-bottom:12px;">'
+        + '<label style="display:block;font-family:Cinzel,serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px;">Description *</label>'
+        + '<textarea id="sp-description" rows="4" placeholder="Describe what this spell does..." style="width:100%;background:var(--bg-card);border:1px solid var(--border);color:var(--text);font-family:Spectral,Georgia,serif;font-size:13px;padding:8px 10px;box-sizing:border-box;resize:vertical;">' + (existing ? (existing.description || '') : '') + '</textarea>'
+        + '</div>'
+
+        + '<div style="margin-bottom:12px;">'
+        + '<label style="display:block;font-family:Cinzel,serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px;">At Higher Levels</label>'
+        + '<textarea id="sp-higher" rows="2" placeholder="What happens when this spell is cast at higher levels?" style="width:100%;background:var(--bg-card);border:1px solid var(--border);color:var(--text);font-family:Spectral,Georgia,serif;font-size:13px;padding:8px 10px;box-sizing:border-box;resize:vertical;">' + (existing ? (existing.atHigherLevels || '') : '') + '</textarea>'
+        + '</div>'
+
+        + '<div style="display:flex;gap:8px;margin-bottom:12px;">'
+        + '<label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:11px;color:var(--text-muted);">'
+        + '<input id="sp-ritual" type="checkbox"' + (existing && existing.ritual ? ' checked' : '') + ' style="width:13px;height:13px;accent-color:var(--crimson);"/>Ritual'
+        + '</label>'
+        + '<label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:11px;color:var(--text-muted);">'
+        + '<input id="sp-concentration" type="checkbox"' + (existing && existing.concentration ? ' checked' : '') + ' style="width:13px;height:13px;accent-color:var(--crimson);"/>Requires Concentration'
+        + '</label>'
+        + '</div>'
+
+        + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">'
+        + '<div><label style="display:block;font-family:Cinzel,serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px;">Damage/Healing Type</label>'
+        + '<select id="sp-dmgtype" style="width:100%;background:var(--bg-card);border:1px solid var(--border);color:var(--text);font-family:Spectral,Georgia,serif;font-size:13px;padding:6px 8px;box-sizing:border-box;">'
+        + '<option value="">None</option>'
+        + damageTypes.map(function(dt) { return '<option value="' + dt + '"' + (existing && existing.damageType === dt ? ' selected' : '') + '>' + dt + '</option>'; }).join('')
+        + '</select>'
+        + '</div>'
+        + '<div><label style="display:block;font-family:Cinzel,serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px;">Damage Dice</label>'
+        + '<input id="sp-damage" type="text" value="' + (existing ? (existing.damage || '') : '') + '" placeholder="e.g. 8d6, 1d4+1" style="width:100%;background:var(--bg-card);border:1px solid var(--border);color:var(--text);font-family:Spectral,Georgia,serif;font-size:13px;padding:6px 8px;box-sizing:border-box;"/>'
+        + '</div>'
+        + '</div>'
+
+        + '<div style="display:flex;gap:8px;">'
+        + '<button onclick="saveSpell()" style="flex:1;background:var(--crimson);border:none;color:#f5f0e8;font-family:Cinzel,serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:10px;cursor:pointer;">Save Spell</button>'
+        + '<button onclick="closeSpellModal()" style="flex:1;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-family:Cinzel,serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:10px;cursor:pointer;">Cancel</button>'
+        + '</div>'
+
+        + '</div></div>';
+
+      var host = document.getElementById('hbe-modal-host');
+      if (!host) {
+        host = document.createElement('div');
+        host.id = 'hbe-modal-host';
+        document.body.appendChild(host);
+      }
+      host.innerHTML = html;
+    }
+
+    function closeSpellModal() {
+      var host = document.getElementById('hbe-modal-host');
+      if (host) host.innerHTML = '';
+    }
+
+    function saveSpell() {
+      var name = document.getElementById('sp-name').value.trim();
+      var level = parseInt(document.getElementById('sp-level').value) || 0;
+      var school = document.getElementById('sp-school').value;
+      var castingTime = document.getElementById('sp-castingtime').value.trim() || '1 action';
+      var range = document.getElementById('sp-range').value.trim() || 'Self';
+      var duration = document.getElementById('sp-duration').value.trim() || 'Instantaneous';
+      var description = document.getElementById('sp-description').value.trim();
+      var atHigherLevels = document.getElementById('sp-higher').value.trim();
+      var ritual = document.getElementById('sp-ritual').checked;
+      var concentration = document.getElementById('sp-concentration').checked;
+      var damageType = document.getElementById('sp-dmgtype').value;
+      var damage = document.getElementById('sp-damage').value.trim();
+      var materialComponent = document.getElementById('sp-material').value.trim();
+
+      if (!name) {
+        showRestToast('Missing Required Field', 'Spell name is required.');
+        return;
+      }
+      if (!description) {
+        showRestToast('Missing Required Field', 'Spell description is required.');
+        return;
+      }
+
+      var components = [];
+      document.querySelectorAll('.sp-comp-cb:checked').forEach(function(cb) {
+        components.push(cb.value);
+      });
+
+      var classes = [];
+      document.querySelectorAll('.sp-class-cb:checked').forEach(function(cb) {
+        classes.push(cb.value);
+      });
+
+      var id = _spellEditId || spellId(name);
+      _homebrewSpells[id] = {
+        id: id,
+        name: name,
+        level: level,
+        school: school,
+        castingTime: castingTime,
+        range: range,
+        duration: duration,
+        components: components,
+        materialComponent: materialComponent,
+        description: description,
+        atHigherLevels: atHigherLevels,
+        ritual: ritual,
+        concentration: concentration,
+        damageType: damageType,
+        damage: damage,
+        classes: classes,
+        created: existing ? existing.created : new Date().toISOString()
+      };
+
+      saveHomebrewSpells();
+      closeSpellModal();
+      cmpRefreshMineCount();
+      cmpRenderContent();
+      showRestToast('Spell Saved', 'Your spell "' + escapeHtml(name) + '" has been saved.');
     }
 
     // ══════════════════════════════════════════════════════════════
@@ -3549,6 +4091,7 @@
 
     function cmpInit() {
       loadHomebrewItems();
+      loadHomebrewSpells();
       loadHomebrewEntities();
       cmpRefreshMineCount();
       cmpRenderTagFilters();
@@ -3628,6 +4171,7 @@
         total += Object.keys(_homebrewEntities[t] || {}).length;
       });
       total += Object.keys(DND_DATA.homebrewDB || {}).length;
+      total += Object.keys(_homebrewSpells || {}).length;
       el.innerHTML = total === 0
         ? 'No homebrew yet &mdash; create something!'
         : total + ' homebrew creation' + (total === 1 ? '' : 's') + ' in your collection';
@@ -3645,6 +4189,11 @@
           });
         });
         Object.values(DND_DATA.homebrewDB || {}).forEach(function(e) {
+          if (e.tags) {
+            e.tags.forEach(function(tag) { allTags.add(tag); });
+          }
+        });
+        Object.values(_homebrewSpells || {}).forEach(function(e) {
           if (e.tags) {
             e.tags.forEach(function(tag) { allTags.add(tag); });
           }
@@ -3707,8 +4256,8 @@
       var q      = (document.getElementById('cmp-search').value || '').toLowerCase();
       var sortBy = document.getElementById('cmp-sort').value;
 
-      var typeColors = { race:'#4169e1', class:'var(--crimson)', background:'#2e8b57', subclass:'#8b6914', item:'#6b4ea8' };
-      var typeLabels = { race:'Race', class:'Class', background:'Background', subclass:'Subclass', item:'Item' };
+      var typeColors = { race:'#4169e1', class:'var(--crimson)', background:'#2e8b57', subclass:'#8b6914', item:'#6b4ea8', spell:'#2980b9' };
+      var typeLabels = { race:'Race', class:'Class', background:'Background', subclass:'Subclass', item:'Item', spell:'Spell' };
 
       // Gather all local homebrew
       var all = [];
@@ -3719,6 +4268,9 @@
       });
       Object.values(DND_DATA.homebrewDB || {}).forEach(function(e) {
         all.push({ type: 'item', entry: e });
+      });
+      Object.values(_homebrewSpells || {}).forEach(function(e) {
+        all.push({ type: 'spell', entry: e });
       });
 
       // Filter
@@ -3776,6 +4328,7 @@
           sub = pc ? pc.name : (e.parentClass || '');
         }
         if (type === 'item')       sub = (e.category || '') + ' &middot; ' + (e.rarity || 'common');
+        if (type === 'spell')      sub = 'Level ' + (e.level || 0) + ' &middot; ' + (e.school || 'Magic') + ' &middot; ' + (e.castingTime || '1 action');
 
         // Desc snippet
         var desc = e.desc || (e.traits && e.traits[0] && e.traits[0].desc) ||

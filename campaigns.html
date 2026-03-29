@@ -312,6 +312,101 @@
     .campaign-detail-back { padding: 10px 20px; background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
     .campaign-detail-back:hover { border-color: var(--crimson); color: var(--crimson); }
 
+    /* DM Notes Formatter */
+    .dm-notes-container { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .dm-notes-input { flex: 1; }
+    .dm-notes-textarea { width: 100%; min-height: 400px; padding: 16px; background: var(--bg-input); border: 1px solid var(--border); color: var(--text); font-family: 'Spectral', serif; font-size: 13px; border-radius: 2px; box-sizing: border-box; }
+    .dm-notes-preview { background: var(--bg-card); border: 1px solid var(--border); padding: 24px; border-radius: 2px; max-height: 600px; overflow-y: auto; }
+    .format-buttons { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+
+    /* Campaign Document Styles */
+    .campaign-doc { max-width: 100%; margin: 0; padding: 24px; background: var(--bg-card); }
+    .campaign-doc-title { font-family: 'Cinzel', serif; font-size: 28px; text-align: center; color: var(--crimson); margin-bottom: 8px; }
+    .campaign-doc-subtitle { text-align: center; color: var(--text-dim); font-size: 14px; margin-bottom: 24px; border-bottom: 1px solid var(--crimson-border); padding-bottom: 16px; }
+    .campaign-doc-session { font-family: 'Cinzel', serif; font-size: 18px; color: var(--crimson); border-bottom: 2px solid var(--crimson); padding-bottom: 4px; margin: 32px 0 16px; }
+    .campaign-doc-boxed { background: var(--crimson-soft); border-left: 3px solid var(--crimson); padding: 16px 20px; margin: 16px 0; font-style: italic; color: var(--text); line-height: 1.7; }
+    .campaign-doc-npc { background: var(--bg-mid); border: 1px solid var(--border); padding: 14px 18px; margin: 12px 0; }
+    .campaign-doc-npc-name { font-family: 'Cinzel', serif; font-size: 14px; color: var(--crimson); margin-bottom: 4px; }
+    .campaign-doc-location { background: var(--bg-mid); border: 1px solid var(--border); border-left: 3px solid #2ecc71; padding: 14px 18px; margin: 12px 0; }
+    .campaign-doc-location-name { font-family: 'Cinzel', serif; font-size: 14px; color: #2ecc71; margin-bottom: 4px; }
+    .campaign-doc-encounter { background: var(--bg-mid); border: 1px solid var(--border); padding: 14px 18px; margin: 12px 0; }
+    .campaign-doc-treasure { background: var(--bg-mid); border: 1px solid var(--border); border-left: 3px solid #f39c12; padding: 14px 18px; margin: 12px 0; }
+    .campaign-doc-text { color: var(--text); line-height: 1.7; margin: 8px 0; }
+
+    /* Campaign Overview */
+    .campaign-overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px; }
+    .campaign-stat-card { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 2px; text-align: center; }
+    .campaign-stat-number { font-size: 32px; color: var(--crimson); font-family: 'Cinzel', serif; margin-bottom: 4px; }
+    .campaign-stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Campaign Resources */
+    .campaign-resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1px; background: var(--crimson-border); border: 1px solid var(--crimson-border); margin: 20px 0; }
+    .campaign-resource-card { background: var(--bg-card); padding: 20px; cursor: pointer; transition: background 0.3s; }
+
+    /* ── Campaign Idea Generator ── */
+    .idea-gen-section { margin-top: 32px; border-top: 1px solid var(--border); padding-top: 28px; }
+    .idea-gen-header { font-family: 'Cinzel', serif; font-size: 16px; letter-spacing: 2px; color: var(--crimson); margin-bottom: 6px; }
+    .idea-gen-sub { font-size: 13px; color: var(--text-dim); margin-bottom: 18px; line-height: 1.6; }
+    .idea-gen-controls { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+    @media (max-width: 860px) { .idea-gen-controls { grid-template-columns: 1fr; } }
+    .idea-gen-select, .idea-gen-input {
+      background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text);
+      font-family: 'Spectral', serif; font-size: 13px; padding: 9px 12px; border-radius: 2px; width: 100%; box-sizing: border-box;
+    }
+    .idea-gen-select:focus, .idea-gen-input:focus { outline: none; border-color: var(--crimson-border); }
+    .idea-gen-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; display: block; }
+    .idea-gen-btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .idea-gen-btn {
+      font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 9px 16px; cursor: pointer; transition: all 0.15s; border-radius: 2px;
+    }
+    .idea-gen-btn.primary { background: var(--crimson); border: 1px solid var(--crimson); color: #f5f0e8; }
+    .idea-gen-btn.primary:hover { opacity: 0.85; }
+    .idea-gen-btn.secondary { background: transparent; border: 1px solid var(--border); color: var(--text-muted); }
+    .idea-gen-btn.secondary:hover { border-color: var(--crimson-border); color: var(--text); background: var(--crimson-soft); }
+    .idea-gen-output { margin-top: 8px; }
+    .idea-card {
+      background: var(--bg-card); border: 1px solid var(--border); padding: 18px 20px; margin-bottom: 10px;
+      border-left: 3px solid var(--crimson); transition: border-color 0.15s;
+    }
+    .idea-card:hover { border-color: var(--crimson-border); }
+    .idea-card-type {
+      font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--crimson); margin-bottom: 6px; display: inline-block;
+    }
+    .idea-card-title { font-family: 'Cinzel', serif; font-size: 15px; color: var(--text); margin-bottom: 6px; }
+    .idea-card-body { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+    .idea-card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+    .idea-tag {
+      font-family: 'Cinzel', serif; font-size: 7px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 3px 8px; background: var(--crimson-soft); color: var(--crimson); border: 1px solid var(--crimson-border);
+    }
+    .idea-card-actions { display: flex; gap: 8px; margin-top: 12px; }
+    .idea-action-btn {
+      font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 5px 12px; background: transparent; border: 1px solid var(--border); color: var(--text-muted);
+      cursor: pointer; transition: all 0.15s;
+    }
+    .idea-action-btn:hover { border-color: var(--crimson-border); color: var(--text); background: var(--crimson-soft); }
+    .idea-card.plot { border-left-color: var(--crimson); }
+    .idea-card.encounter { border-left-color: #e67e22; }
+    .idea-card.npc { border-left-color: #3498db; }
+    .idea-card.location { border-left-color: #2ecc71; }
+    .idea-card.twist { border-left-color: #9b59b6; }
+    .idea-card.item { border-left-color: #f39c12; }
+    .idea-card.subplot { border-left-color: #1abc9c; }
+    .idea-card.plot .idea-card-type { color: var(--crimson); }
+    .idea-card.encounter .idea-card-type { color: #e67e22; }
+    .idea-card.npc .idea-card-type { color: #3498db; }
+    .idea-card.location .idea-card-type { color: #2ecc71; }
+    .idea-card.twist .idea-card-type { color: #9b59b6; }
+    .idea-card.item .idea-card-type { color: #f39c12; }
+    .idea-card.subplot .idea-card-type { color: #1abc9c; }
+    .campaign-resource-card:hover { background: var(--bg-hover); }
+    .campaign-resource-type { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 1.5px; color: var(--crimson); text-transform: uppercase; margin-bottom: 8px; }
+    .campaign-resource-name { font-size: 16px; color: var(--text); margin-bottom: 8px; }
+    .campaign-resource-meta { font-size: 12px; color: var(--text-muted); }
+
     /* Responsive */
     @media (max-width: 1200px) {
       .campaign-grid { grid-template-columns: repeat(2, 1fr); }
@@ -404,12 +499,33 @@
       </div>
 
       <div class="campaign-tabs">
-        <button class="campaign-tab active" onclick="switchTab('party', this)">Party</button>
+        <button class="campaign-tab active" onclick="switchTab('overview', this)">Overview</button>
+        <button class="campaign-tab" onclick="switchTab('party', this)">Party</button>
         <button class="campaign-tab" onclick="switchTab('encounters', this)">Encounters</button>
         <button class="campaign-tab" onclick="switchTab('notes', this)">Session Notes</button>
+        <button class="campaign-tab" onclick="switchTab('dmNotes', this)">DM Notes</button>
+        <button class="campaign-tab" onclick="switchTab('resources', this)">Resources</button>
         <button class="campaign-tab" onclick="switchTab('initiative', this)">Initiative</button>
         <button class="campaign-tab" onclick="switchTab('players', this)">Players</button>
         <button class="campaign-tab" onclick="switchTab('battlemap', this)">Battlemap</button>
+      </div>
+
+      <!-- Overview Tab -->
+      <div id="overviewTab" class="tab-content active">
+        <div class="campaign-overview-grid" id="campaignOverviewStats"></div>
+        <div class="section-header">
+          <div class="section-title">Quick Links</div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-bottom: 32px;">
+          <button class="form-button" onclick="switchTab('party', document.querySelectorAll('.campaign-tab')[1])" style="background: var(--bg-card); border: 1px solid var(--border); color: var(--text); flex: 1;">Manage Party</button>
+          <button class="form-button" onclick="switchTab('encounters', document.querySelectorAll('.campaign-tab')[2])" style="background: var(--bg-card); border: 1px solid var(--border); color: var(--text); flex: 1;">Build Encounters</button>
+          <button class="form-button" onclick="switchTab('notes', document.querySelectorAll('.campaign-tab')[3])" style="background: var(--bg-card); border: 1px solid var(--border); color: var(--text); flex: 1;">Session Notes</button>
+          <button class="form-button" onclick="switchTab('initiative', document.querySelectorAll('.campaign-tab')[6])" style="background: var(--bg-card); border: 1px solid var(--border); color: var(--text); flex: 1;">Run Initiative</button>
+        </div>
+        <div class="section-header">
+          <div class="section-title">Recent Session Notes</div>
+        </div>
+        <div id="campaignRecentNotes"></div>
       </div>
 
       <!-- Party Tab -->
@@ -443,6 +559,142 @@
         <div style="margin-bottom: 16px;"><input type="text" id="noteSearchInput" class="form-input" placeholder="Search notes..." onkeyup="filterNotesList()" style="width: 100%; max-width: 300px;"></div>
         <div id="notesList" class="notes-list">
           <div class="empty-state" style="grid-column: 1/-1;"><div class="empty-state-text">No session notes yet. Record your first session!</div></div>
+        </div>
+      </div>
+
+      <!-- DM Notes Tab -->
+      <div id="dmNotesTab" class="tab-content">
+        <div class="section-header">
+          <div class="section-title">DM Notes Formatter</div>
+          <button class="section-add-btn" onclick="clearDMNotesInput()">Clear</button>
+        </div>
+        <div style="font-size: 13px; color: var(--text-dim); margin-bottom: 20px;">Paste your raw notes below and the formatter will convert them into a beautifully styled campaign document. The formatter recognizes:<br/><strong>Session:</strong> lines starting with 'Session' • <strong>NPCs:</strong> capitalized names followed by descriptions • <strong>Locations:</strong> location-related lines • <strong>Read Aloud:</strong> quoted text or lines with quotes • <strong>Encounters:</strong> combat stats (HP/AC/DMG)</div>
+        <div class="dm-notes-container">
+          <div class="dm-notes-input">
+            <label class="form-label">Raw Notes</label>
+            <textarea class="dm-notes-textarea" id="dmNotesRawInput" placeholder="Paste your raw campaign notes here...&#10;&#10;Example:&#10;Session 1 - The Goblin Hideout&#10;Date: March 15, 2024&#10;&#10;Bugbear Chief&#10;A massive bugbear with a scarred face and cruel demeanor. Uses a morningstar. HP: 22, AC: 16, DMG: 2d8&#10;&#10;The Entrance&#10;A cave mouth obscured by hanging vines and moss. Faint sounds of activity echo from within."></textarea>
+            <div class="format-buttons">
+              <button class="form-button" onclick="formatDMNotes()">Format as Document</button>
+              <button class="form-button secondary" onclick="formatDMNotesAsPrint()">Format for Print</button>
+            </div>
+          </div>
+          <div class="dm-notes-preview" id="dmNotesFormattedPreview"></div>
+        </div>
+
+        <!-- ── Campaign Idea Generator ── -->
+        <div class="idea-gen-section">
+          <div class="idea-gen-header">Campaign Idea Generator</div>
+          <div class="idea-gen-sub">Generate plot hooks, encounters, NPCs, locations, twists, magic items, and subplots that fit your campaign's theme. The generator reads your campaign info and notes to stay on-theme.</div>
+
+          <div class="idea-gen-controls">
+            <div>
+              <label class="idea-gen-label">What to Generate</label>
+              <select class="idea-gen-select" id="ideaGenType">
+                <option value="plot">Plot Hook</option>
+                <option value="encounter">Encounter Idea</option>
+                <option value="npc">NPC Concept</option>
+                <option value="location">Location</option>
+                <option value="twist">Plot Twist</option>
+                <option value="item">Magic Item / Loot</option>
+                <option value="subplot">Side Quest / Subplot</option>
+                <option value="mixed">Surprise Me (Mixed)</option>
+              </select>
+            </div>
+            <div>
+              <label class="idea-gen-label">Tone / Style</label>
+              <select class="idea-gen-select" id="ideaGenTone">
+                <option value="any">Any</option>
+                <option value="dark">Dark & Gritty</option>
+                <option value="heroic">Heroic & Epic</option>
+                <option value="mystery">Mysterious & Suspenseful</option>
+                <option value="whimsical">Whimsical & Lighthearted</option>
+                <option value="horror">Horror & Dread</option>
+                <option value="political">Political Intrigue</option>
+                <option value="exploration">Exploration & Wonder</option>
+              </select>
+            </div>
+            <div>
+              <label class="idea-gen-label">Theme Keywords (optional)</label>
+              <input type="text" class="idea-gen-input" id="ideaGenKeywords" placeholder="e.g. undead, forest, betrayal..." />
+            </div>
+          </div>
+          <div class="idea-gen-controls" style="grid-template-columns: 1fr 1fr;">
+            <div>
+              <label class="idea-gen-label">Party Level Range</label>
+              <select class="idea-gen-select" id="ideaGenLevel">
+                <option value="any">Any / Auto-detect</option>
+                <option value="low">Low (1-4)</option>
+                <option value="mid">Mid (5-10)</option>
+                <option value="high">High (11-16)</option>
+                <option value="epic">Epic (17-20)</option>
+              </select>
+            </div>
+            <div>
+              <label class="idea-gen-label">Environment</label>
+              <select class="idea-gen-select" id="ideaGenEnvironment">
+                <option value="any">Any</option>
+                <option value="dungeon">Dungeon / Underground</option>
+                <option value="wilderness">Wilderness / Overland</option>
+                <option value="urban">Urban / City</option>
+                <option value="coastal">Coastal / Maritime</option>
+                <option value="planar">Planar / Otherworldly</option>
+                <option value="arctic">Arctic / Frozen</option>
+                <option value="desert">Desert / Wasteland</option>
+                <option value="swamp">Swamp / Marshland</option>
+              </select>
+            </div>
+          </div>
+          <div class="idea-gen-btn-row">
+            <button class="idea-gen-btn primary" onclick="generateCampaignIdea()">Generate Idea</button>
+            <button class="idea-gen-btn secondary" onclick="generateCampaignIdeas(3)">Generate 3 Ideas</button>
+            <button class="idea-gen-btn secondary" onclick="generateFullSessionOutline()">Generate Session Outline</button>
+            <button class="idea-gen-btn secondary" onclick="clearIdeaOutput()">Clear</button>
+          </div>
+          <div class="idea-gen-output" id="ideaGenOutput"></div>
+        </div>
+      </div>
+
+      <!-- Resources Tab -->
+      <div id="resourcesTab" class="tab-content">
+        <div class="section-header">
+          <div class="section-title">Campaign Resources</div>
+          <button class="section-add-btn" onclick="expandAllResources()">Expand All</button>
+        </div>
+
+        <!-- Campaign Monsters -->
+        <div class="section-header" style="margin-top: 24px;">
+          <div class="section-title">Campaign Monsters</div>
+          <button class="section-add-btn" onclick="openAddCampaignMonsterModal()" style="background: transparent; border: 1px solid var(--border); color: var(--text-muted);">+ Add Monster</button>
+        </div>
+        <div id="campaignMonstersList" class="campaign-resources-grid">
+          <div style="grid-column: 1/-1; color: var(--text-dim); font-size: 13px; padding: 16px;">No campaign monsters saved. Add monsters here to quickly access them during encounters.</div>
+        </div>
+
+        <!-- Campaign NPCs -->
+        <div class="section-header" style="margin-top: 24px;">
+          <div class="section-title">Campaign NPCs</div>
+          <button class="section-add-btn" onclick="openAddCampaignNPCModal()" style="background: transparent; border: 1px solid var(--border); color: var(--text-muted);">+ Add NPC</button>
+        </div>
+        <div id="campaignNPCsList" class="campaign-resources-grid">
+          <div style="grid-column: 1/-1; color: var(--text-dim); font-size: 13px; padding: 16px;">No campaign NPCs saved. Add NPCs to track important characters in your campaign.</div>
+        </div>
+
+        <!-- Campaign Items -->
+        <div class="section-header" style="margin-top: 24px;">
+          <div class="section-title">Campaign Items & Loot</div>
+          <button class="section-add-btn" onclick="openAddCampaignItemModal()" style="background: transparent; border: 1px solid var(--border); color: var(--text-muted);">+ Add Item</button>
+        </div>
+        <div id="campaignItemsList" class="campaign-resources-grid">
+          <div style="grid-column: 1/-1; color: var(--text-dim); font-size: 13px; padding: 16px;">No items saved. Add homebrew items and loot for your campaign.</div>
+        </div>
+
+        <!-- Campaign Maps -->
+        <div class="section-header" style="margin-top: 24px;">
+          <div class="section-title">Campaign Maps</div>
+          <button class="section-add-btn" onclick="openAddCampaignMapModal()" style="background: transparent; border: 1px solid var(--border); color: var(--text-muted);">+ Add Map</button>
+        </div>
+        <div id="campaignMapsList" class="campaign-resources-grid">
+          <div style="grid-column: 1/-1; color: var(--text-dim); font-size: 13px; padding: 16px;">No maps saved. Associate maps with campaign locations.</div>
         </div>
       </div>
 
@@ -887,6 +1139,8 @@
       loadCampaigns();
       renderCampaignList();
       buildTypeFilterTags();
+      populateMonsterTypeFilter();
+      calculateCR();
       updateAuthUI();
 
       // Hook into PhmurtDB auth state changes if available
@@ -895,7 +1149,11 @@
       }
 
       // Listen for custom auth events that phmurt-auth.js may fire
-      window.addEventListener('phmurt-auth-change', function() { onAuthChanged(); });
+      window.addEventListener('phmurt-auth-change', function() {
+        onAuthChanged();
+        // Pull cloud campaigns when user signs in
+        setTimeout(syncCampaignsFromCloud, 400);
+      });
 
       // Catch storage events (sign-in in another tab updates localStorage)
       window.addEventListener('storage', function(e) {
@@ -909,13 +1167,11 @@
     }
 
     // ═══════════════════════════════
-    // STORAGE: shared campaign registry
+    // STORAGE: shared campaign registry + Supabase cloud sync
     // ═══════════════════════════════
-    // Campaigns are stored in a shared registry (phmurt_campaign_registry) keyed by campaign ID.
-    // Each user also has a list of campaign IDs they belong to (phmurt_my_campaign_ids).
-    // This way, when user B joins via invite code, they can find and access the campaign
-    // that user A created as long as they share the same browser/device.
-    // When PhmurtDB backend support is available, this will sync via the server.
+    // Local: campaigns stored in phmurt_campaign_registry (keyed by campaign ID).
+    // Cloud: when Supabase is configured each save/delete also syncs to the campaigns table.
+    // On page load, cloud campaigns are merged into the local registry.
 
     function loadAllCampaignsFromRegistry() {
       var reg = localStorage.getItem('phmurt_campaign_registry');
@@ -924,6 +1180,49 @@
 
     function saveRegistry(registry) {
       localStorage.setItem('phmurt_campaign_registry', JSON.stringify(registry));
+    }
+
+    // ── Cloud sync helpers ──────────────────────────────────────────
+    function _syncCampaignToCloud(campaign) {
+      if (typeof PhmurtDB !== 'undefined' && typeof PhmurtDB.saveCampaign === 'function') {
+        PhmurtDB.saveCampaign(campaign).catch(function() {});
+      }
+    }
+
+    function _deleteCampaignFromCloud(campaignId) {
+      if (typeof PhmurtDB !== 'undefined' && typeof PhmurtDB.deleteCampaign === 'function') {
+        PhmurtDB.deleteCampaign(campaignId).catch(function() {});
+      }
+    }
+
+    // Pull all owned campaigns from Supabase and merge into local registry
+    function syncCampaignsFromCloud() {
+      if (typeof PhmurtDB === 'undefined' || typeof PhmurtDB.getCampaigns !== 'function') return;
+      if (!PhmurtDB.db()) return;  // Supabase not configured
+      PhmurtDB.getCampaigns().then(function(cloudCampaigns) {
+        if (!cloudCampaigns || !cloudCampaigns.length) return;
+        var registry = loadAllCampaignsFromRegistry();
+        var user = getAuthUser();
+        var myIds = user ? getMyCampaignIds() : [];
+        var changed = false;
+        cloudCampaigns.forEach(function(c) {
+          if (!c || !c.id) return;
+          if (!registry[c.id] || (c.updatedAt && registry[c.id].updatedAt && c.updatedAt > registry[c.id].updatedAt)) {
+            registry[c.id] = c;
+            changed = true;
+          }
+          if (user && myIds.indexOf(c.id) === -1) {
+            myIds.push(c.id);
+            changed = true;
+          }
+        });
+        if (changed) {
+          saveRegistry(registry);
+          if (user) saveMyCampaignIds(myIds);
+          loadCampaigns();
+          renderCampaignList();
+        }
+      }).catch(function() {});
     }
 
     function getMyCampaignIds() {
@@ -988,6 +1287,7 @@
       var registry = loadAllCampaignsFromRegistry();
       campaigns.forEach(function(c) {
         registry[c.id] = c;
+        _syncCampaignToCloud(c);  // ← cloud sync
       });
       saveRegistry(registry);
     }
@@ -1093,12 +1393,15 @@
       document.getElementById('partySizeText').textContent = (c.party || []).length;
       document.getElementById('encounterCountText').textContent = (c.encounters || []).length;
       document.getElementById('sessionCountText').textContent = (c.notes || []).length;
+      renderOverviewTab(c);
       renderPartyTab(c);
       renderEncountersTab(c);
       renderNotesTab(c);
+      renderCampaignResources(c);
       renderPlayersTab(c);
       renderInviteSection(c);
-      switchTab('party', document.querySelector('.campaign-tab'));
+      var tabButtons = document.querySelectorAll('.campaign-tab');
+      switchTab('overview', tabButtons[0]);
     }
 
     // ═══════════════════════════════
@@ -1136,6 +1439,7 @@
       var reg = loadAllCampaignsFromRegistry();
       delete reg[id];
       saveRegistry(reg);
+      _deleteCampaignFromCloud(id);  // ← cloud delete
       renderCampaignList();
     }
 
@@ -1150,7 +1454,7 @@
     function joinCampaign() {
       var user = requireAuth();
       if (!user) return;
-      var codeInput = document.getElementById('joinCode');
+      var codeInput = document.getElementById('joinCodeInput');
       if (!codeInput) return;
       var code = codeInput.value.trim().toUpperCase();
       if (!code) { if (window.psToast) psToast('Enter an invite code'); return; }
@@ -1350,8 +1654,8 @@
     }
 
     function renderInviteSection(c) {
-      var el = document.getElementById('inviteCodeDisplay');
-      if (el) el.textContent = c.inviteCode || 'N/A';
+      var el = document.getElementById('inviteCode');
+      if (el) el.textContent = c.inviteCode || '------';
     }
 
     // ═══════════════════════════════
@@ -1468,6 +1772,108 @@
       var counter = document.getElementById('selectedMonsterCount');
       if (counter) counter.textContent = window._selectedEncounterMonsters.length + ' selected';
       if (window.psToast) psToast('Added ' + name);
+    }
+
+    // ═══════════════════════════════
+    // CR CALCULATOR
+    // ═══════════════════════════════
+    function calculateCR() {
+      var partySize = parseInt(document.getElementById('partySizeCalc').value, 10) || 4;
+      var avgLevel = parseInt(document.getElementById('avgLevelCalc').value, 10) || 1;
+      var results = document.getElementById('crResults');
+      if (!results) return;
+
+      // Standard 5e encounter difficulty thresholds per character level
+      var thresholds = {
+        1:{easy:25,medium:50,hard:75,deadly:100},2:{easy:50,medium:100,hard:150,deadly:200},
+        3:{easy:75,medium:150,hard:225,deadly:400},4:{easy:125,medium:250,hard:375,deadly:500},
+        5:{easy:250,medium:500,hard:750,deadly:1100},6:{easy:300,medium:600,hard:900,deadly:1400},
+        7:{easy:350,medium:750,hard:1100,deadly:1700},8:{easy:450,medium:900,hard:1400,deadly:2100},
+        9:{easy:550,medium:1100,hard:1600,deadly:2400},10:{easy:600,medium:1200,hard:1900,deadly:2800},
+        11:{easy:800,medium:1600,hard:2400,deadly:3600},12:{easy:1000,medium:2000,hard:3000,deadly:4500},
+        13:{easy:1100,medium:2200,hard:3400,deadly:5100},14:{easy:1250,medium:2500,hard:3800,deadly:5700},
+        15:{easy:1400,medium:2800,hard:4300,deadly:6400},16:{easy:1600,medium:3200,hard:4800,deadly:7200},
+        17:{easy:2000,medium:3900,hard:5900,deadly:8800},18:{easy:2100,medium:4200,hard:6300,deadly:9500},
+        19:{easy:2400,medium:4900,hard:7300,deadly:10900},20:{easy:2800,medium:5700,hard:8500,deadly:12700}
+      };
+      var lvl = Math.min(Math.max(avgLevel, 1), 20);
+      var t = thresholds[lvl];
+      var easy = t.easy * partySize;
+      var medium = t.medium * partySize;
+      var hard = t.hard * partySize;
+      var deadly = t.deadly * partySize;
+
+      results.innerHTML =
+        '<div style="margin-top:12px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;">' +
+          '<div style="padding:12px 8px;background:rgba(39,174,96,0.12);border-radius:4px;"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:4px;">Easy</div><div style="font-size:18px;color:#27ae60;font-weight:600;">' + easy.toLocaleString() + '</div><div style="font-size:10px;color:var(--text-muted);">XP</div></div>' +
+          '<div style="padding:12px 8px;background:rgba(241,196,15,0.12);border-radius:4px;"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:4px;">Medium</div><div style="font-size:18px;color:#f1c40f;font-weight:600;">' + medium.toLocaleString() + '</div><div style="font-size:10px;color:var(--text-muted);">XP</div></div>' +
+          '<div style="padding:12px 8px;background:rgba(230,126,34,0.12);border-radius:4px;"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:4px;">Hard</div><div style="font-size:18px;color:#e67e22;font-weight:600;">' + hard.toLocaleString() + '</div><div style="font-size:10px;color:var(--text-muted);">XP</div></div>' +
+          '<div style="padding:12px 8px;background:rgba(192,57,43,0.12);border-radius:4px;"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:4px;">Deadly</div><div style="font-size:18px;color:var(--crimson);font-weight:600;">' + deadly.toLocaleString() + '</div><div style="font-size:10px;color:var(--text-muted);">XP</div></div>' +
+        '</div>';
+    }
+
+    // ═══════════════════════════════
+    // MONSTER FILTER
+    // ═══════════════════════════════
+    function filterMonsters() {
+      var search = (document.getElementById('monsterSearchInput').value || '').toLowerCase();
+      var typeFilter = document.getElementById('monsterTypeFilter').value;
+      var crFilter = document.getElementById('monsterCRFilter').value;
+      var sizeFilter = document.getElementById('monsterSizeFilter').value;
+
+      var monsters = (typeof MONSTER_DATA !== 'undefined') ? MONSTER_DATA : [];
+      if (!monsters.length) return;
+
+      var filtered = monsters.filter(function(m) {
+        if (search && m.name.toLowerCase().indexOf(search) === -1) return false;
+        if (typeFilter && (m.type || '').toLowerCase() !== typeFilter.toLowerCase()) return false;
+        if (sizeFilter && (m.size || '') !== sizeFilter) return false;
+        if (crFilter) {
+          var parts = crFilter.split('-');
+          var minCR = parseFloat(parts[0]);
+          var maxCR = parseFloat(parts[1] || parts[0]);
+          var mcr = parseFloat(m.cr) || 0;
+          if (mcr < minCR || mcr > maxCR) return false;
+        }
+        return true;
+      });
+
+      var container = document.getElementById('monsterListContainer');
+      if (!container) return;
+
+      if (!filtered.length) {
+        container.innerHTML = '<div class="empty-state"><div class="empty-state-text">No monsters match your filters.</div></div>';
+        return;
+      }
+
+      var slice = filtered.slice(0, 40);
+      var html = '';
+      slice.forEach(function(m) {
+        html += '<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid var(--border);font-size:13px;">' +
+          '<div><span style="color:var(--text);">' + escapeHtml(m.name) + '</span> <span style="color:var(--text-muted);font-size:11px;">CR ' + m.cr + '</span>' +
+          (m.type ? ' <span style="color:var(--text-muted);font-size:10px;text-transform:capitalize;">(' + escapeHtml(m.type) + ')</span>' : '') + '</div>' +
+          '<button style="background:var(--crimson);color:#f5f0e8;border:none;padding:4px 10px;font-size:11px;cursor:pointer;border-radius:2px;" onclick="addMonsterToEncounter(\'' + escapeHtml(m.name).replace(/'/g, "\\'") + '\',' + m.cr + ')">Add</button>' +
+        '</div>';
+      });
+      if (filtered.length > 40) {
+        html += '<div style="padding:10px;text-align:center;color:var(--text-muted);font-size:12px;">Showing 40 of ' + filtered.length + ' results. Refine your search to see more.</div>';
+      }
+      container.innerHTML = html;
+    }
+
+    // Populate monster type filter options on load
+    function populateMonsterTypeFilter() {
+      var monsters = (typeof MONSTER_DATA !== 'undefined') ? MONSTER_DATA : [];
+      var types = {};
+      monsters.forEach(function(m) { if (m.type) types[m.type.toLowerCase()] = true; });
+      var sel = document.getElementById('monsterTypeFilter');
+      if (!sel) return;
+      Object.keys(types).sort().forEach(function(t) {
+        var opt = document.createElement('option');
+        opt.value = t;
+        opt.textContent = t.charAt(0).toUpperCase() + t.slice(1);
+        sel.appendChild(opt);
+      });
     }
 
     // ═══════════════════════════════
@@ -2704,6 +3110,800 @@
     }
 
     window.addEventListener('resize', function() { if (bm.canvas) resizeBmCanvas(); });
+
+    /* ═══════════════════════════════════════════════════════════════════
+       NEW CAMPAIGN FEATURES: Overview, DM Notes, Resources
+       ═══════════════════════════════════════════════════════════════════ */
+
+    // ═══════════════════════════════
+    // OVERVIEW TAB
+    // ═══════════════════════════════
+    function renderOverviewTab(c) {
+      var statsHtml = '';
+      var partyLevel = 0;
+      if (c.party && c.party.length > 0) {
+        var totalLevel = c.party.reduce(function(sum, p) { return sum + (p.level || 1); }, 0);
+        partyLevel = Math.round(totalLevel / c.party.length);
+      }
+
+      statsHtml += '<div class="campaign-stat-card"><div class="campaign-stat-number">' + (c.party || []).length + '</div><div class="campaign-stat-label">Party Members</div></div>';
+      statsHtml += '<div class="campaign-stat-card"><div class="campaign-stat-number">' + (partyLevel || '-') + '</div><div class="campaign-stat-label">Avg Level</div></div>';
+      statsHtml += '<div class="campaign-stat-card"><div class="campaign-stat-number">' + (c.encounters || []).length + '</div><div class="campaign-stat-label">Encounters</div></div>';
+      statsHtml += '<div class="campaign-stat-card"><div class="campaign-stat-number">' + (c.notes || []).length + '</div><div class="campaign-stat-label">Sessions Logged</div></div>';
+
+      document.getElementById('campaignOverviewStats').innerHTML = statsHtml;
+
+      var recentHtml = '';
+      var notes = c.notes || [];
+      if (notes.length === 0) {
+        recentHtml = '<div style="color: var(--text-dim); font-size: 13px;">No session notes yet. Start recording your sessions!</div>';
+      } else {
+        var recent = notes.slice(-3).reverse();
+        recentHtml = '<div style="display: grid; gap: 12px;">';
+        recent.forEach(function(note) {
+          recentHtml += '<div style="background: var(--bg-card); border: 1px solid var(--border); padding: 16px; border-radius: 2px;">' +
+            '<div style="font-weight: bold; color: var(--text); margin-bottom: 4px;">' + escapeHtml(note.title || 'Untitled') + '</div>' +
+            '<div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">' + (note.date ? new Date(note.date).toLocaleDateString() : 'No date') + '</div>' +
+            '<div style="color: var(--text-dim); font-size: 13px; line-height: 1.5;">' + (note.content ? note.content.substring(0, 150) + '...' : '') + '</div>' +
+          '</div>';
+        });
+        recentHtml += '</div>';
+      }
+      document.getElementById('campaignRecentNotes').innerHTML = recentHtml;
+    }
+
+    // ═══════════════════════════════
+    // DM NOTES FORMATTER
+    // ═══════════════════════════════
+    function formatDMNotes() {
+      var raw = document.getElementById('dmNotesRawInput').value;
+      if (!raw.trim()) {
+        alert('Please enter some notes to format');
+        return;
+      }
+      var formatted = formatRawNotesAsHtml(raw);
+      document.getElementById('dmNotesFormattedPreview').innerHTML = formatted;
+    }
+
+    function formatDMNotesAsPrint() {
+      var raw = document.getElementById('dmNotesRawInput').value;
+      if (!raw.trim()) {
+        alert('Please enter some notes to format');
+        return;
+      }
+      var formatted = formatRawNotesAsHtml(raw);
+      var printWin = window.open('', '', 'width=800,height=600');
+      printWin.document.write('<html><head><title>Campaign Document</title><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet"><style>' +
+        'body { background: white; color: #333; font-family: "Spectral", serif; margin: 0; padding: 20px; }' +
+        '.campaign-doc-title { font-family: "Cinzel", serif; font-size: 28px; text-align: center; color: #c0392b; margin-bottom: 8px; }' +
+        '.campaign-doc-session { font-family: "Cinzel", serif; font-size: 18px; color: #c0392b; border-bottom: 2px solid #c0392b; padding-bottom: 4px; margin: 32px 0 16px; }' +
+        '.campaign-doc-boxed { background: #ffe6e6; border-left: 3px solid #c0392b; padding: 16px 20px; margin: 16px 0; font-style: italic; line-height: 1.7; }' +
+        '.campaign-doc-npc, .campaign-doc-location, .campaign-doc-encounter, .campaign-doc-treasure { background: #f5f5f5; border: 1px solid #ddd; padding: 14px 18px; margin: 12px 0; }' +
+        '.campaign-doc-npc-name, .campaign-doc-location-name { font-family: "Cinzel", serif; font-size: 14px; color: #c0392b; margin-bottom: 4px; font-weight: bold; }' +
+        '@media print { body { margin: 0; padding: 20px; } .no-print { display: none; } }' +
+        '</style></head><body>' + formatted + '</body></html>');
+      printWin.document.close();
+      setTimeout(function() { printWin.print(); }, 250);
+    }
+
+    function formatRawNotesAsHtml(raw) {
+      var lines = raw.split('\n');
+      var html = '<div class="campaign-doc">';
+      var inBoxedText = false;
+      var boxedLines = [];
+
+      for (var i = 0; i < lines.length; i++) {
+        var line = lines[i];
+        var trimmed = line.trim();
+
+        if (!trimmed) continue;
+
+        // Session header
+        if (/^session\s+\d+/i.test(trimmed)) {
+          if (inBoxedText && boxedLines.length > 0) {
+            html += '<div class="campaign-doc-boxed">' + escapeHtml(boxedLines.join('\n')) + '</div>';
+            boxedLines = []; inBoxedText = false;
+          }
+          html += '<div class="campaign-doc-session">' + escapeHtml(trimmed) + '</div>';
+          continue;
+        }
+
+        // Quoted/read-aloud text detection
+        if (trimmed.includes('"') || /^"/.test(trimmed) || /^read\s+aloud/i.test(trimmed)) {
+          if (!inBoxedText && boxedLines.length > 0) {
+            html += '<div class="campaign-doc-boxed">' + escapeHtml(boxedLines.join('\n')) + '</div>';
+            boxedLines = [];
+          }
+          inBoxedText = true;
+          boxedLines.push(trimmed.replace(/^read\s+aloud:?\s*/i, '').replace(/"/g, ''));
+          continue;
+        }
+
+        if (inBoxedText) {
+          boxedLines.push(trimmed);
+          continue;
+        }
+
+        // Encounter detection (HP, AC, DMG)
+        if (/\bhp\s*[:=]\s*\d+|ac\s*[:=]\s*\d+|dmg\s*[:=]|^\d+d\d+/i.test(trimmed)) {
+          if (boxedLines.length > 0) {
+            html += '<div class="campaign-doc-boxed">' + escapeHtml(boxedLines.join('\n')) + '</div>';
+            boxedLines = []; inBoxedText = false;
+          }
+          html += '<div class="campaign-doc-encounter"><strong>' + escapeHtml(lines[i-1] ? lines[i-1].trim() : 'Encounter') + '</strong><div class="campaign-doc-text">' + escapeHtml(trimmed) + '</div></div>';
+          continue;
+        }
+
+        // NPC detection (capitalized words, usually followed by description)
+        if (/^[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s*$/.test(trimmed) && i + 1 < lines.length) {
+          var nextLine = lines[i + 1].trim();
+          if (nextLine && !/^[A-Z][a-z]+/.test(nextLine)) {
+            if (boxedLines.length > 0) {
+              html += '<div class="campaign-doc-boxed">' + escapeHtml(boxedLines.join('\n')) + '</div>';
+              boxedLines = []; inBoxedText = false;
+            }
+            html += '<div class="campaign-doc-npc"><div class="campaign-doc-npc-name">' + escapeHtml(trimmed) + '</div>';
+            i++;
+            html += '<div class="campaign-doc-text">' + escapeHtml(lines[i].trim()) + '</div></div>';
+            continue;
+          }
+        }
+
+        // Location detection
+        if (/location|place|area|room|chamber|hall|tower|village|town|city|forest|dungeon|cave|temple/i.test(trimmed)) {
+          if (boxedLines.length > 0) {
+            html += '<div class="campaign-doc-boxed">' + escapeHtml(boxedLines.join('\n')) + '</div>';
+            boxedLines = []; inBoxedText = false;
+          }
+          html += '<div class="campaign-doc-location"><div class="campaign-doc-location-name">' + escapeHtml(trimmed) + '</div>';
+          if (i + 1 < lines.length && lines[i + 1].trim() && !/^[a-z]/i.test(lines[i + 1].trim())) {
+            i++;
+            html += '<div class="campaign-doc-text">' + escapeHtml(lines[i].trim()) + '</div>';
+          }
+          html += '</div>';
+          continue;
+        }
+
+        // Treasure/loot detection
+        if (/loot|treasure|reward|item|gold|silver|copper|gem|potion|scroll|magic/i.test(trimmed)) {
+          if (boxedLines.length > 0) {
+            html += '<div class="campaign-doc-boxed">' + escapeHtml(boxedLines.join('\n')) + '</div>';
+            boxedLines = []; inBoxedText = false;
+          }
+          html += '<div class="campaign-doc-treasure"><div class="campaign-doc-text">' + escapeHtml(trimmed) + '</div></div>';
+          continue;
+        }
+
+        // Default paragraph
+        if (boxedLines.length > 0) {
+          html += '<div class="campaign-doc-boxed">' + escapeHtml(boxedLines.join('\n')) + '</div>';
+          boxedLines = []; inBoxedText = false;
+        }
+        html += '<div class="campaign-doc-text">' + escapeHtml(trimmed) + '</div>';
+      }
+
+      if (boxedLines.length > 0) {
+        html += '<div class="campaign-doc-boxed">' + escapeHtml(boxedLines.join('\n')) + '</div>';
+      }
+
+      html += '</div>';
+      return html;
+    }
+
+    function clearDMNotesInput() {
+      if (confirm('Clear all raw notes?')) {
+        document.getElementById('dmNotesRawInput').value = '';
+        document.getElementById('dmNotesFormattedPreview').innerHTML = '';
+      }
+    }
+
+    // ═══════════════════════════════
+    // CAMPAIGN RESOURCES (Monsters, NPCs, Items, Maps)
+    // ═══════════════════════════════
+    function getCampaignResourcesKey(campaignId, type) {
+      return 'phmurt_campaign_' + type + '_' + campaignId;
+    }
+
+    function loadCampaignResources(campaignId, type) {
+      var key = getCampaignResourcesKey(campaignId, type);
+      var stored = localStorage.getItem(key);
+      return stored ? JSON.parse(stored) : [];
+    }
+
+    function saveCampaignResources(campaignId, type, items) {
+      var key = getCampaignResourcesKey(campaignId, type);
+      localStorage.setItem(key, JSON.stringify(items));
+    }
+
+    function renderCampaignResources(c) {
+      var cid = c.id;
+
+      // Monsters
+      var monsters = loadCampaignResources(cid, 'monsters');
+      var monsterHtml = monsters.length === 0 ?
+        '<div style="grid-column: 1/-1; color: var(--text-dim); font-size: 13px; padding: 16px;">No campaign monsters saved.</div>' :
+        monsters.map(function(m, idx) {
+          return '<div class="campaign-resource-card" onclick="showResourceDetail(\'monster\', ' + idx + ')">' +
+            '<div class="campaign-resource-type">Monster</div>' +
+            '<div class="campaign-resource-name">' + escapeHtml(m.name || 'Unnamed') + '</div>' +
+            '<div class="campaign-resource-meta">CR ' + (m.cr || '?') + ' · ' + (m.type || 'Unknown') + '</div>' +
+          '</div>';
+        }).join('');
+      document.getElementById('campaignMonstersList').innerHTML = monsterHtml;
+
+      // NPCs
+      var npcs = loadCampaignResources(cid, 'npcs');
+      var npcHtml = npcs.length === 0 ?
+        '<div style="grid-column: 1/-1; color: var(--text-dim); font-size: 13px; padding: 16px;">No campaign NPCs saved.</div>' :
+        npcs.map(function(n, idx) {
+          return '<div class="campaign-resource-card" onclick="showResourceDetail(\'npc\', ' + idx + ')">' +
+            '<div class="campaign-resource-type">NPC</div>' +
+            '<div class="campaign-resource-name">' + escapeHtml(n.name || 'Unnamed') + '</div>' +
+            '<div class="campaign-resource-meta">' + (n.role || 'Character') + '</div>' +
+          '</div>';
+        }).join('');
+      document.getElementById('campaignNPCsList').innerHTML = npcHtml;
+
+      // Items
+      var items = loadCampaignResources(cid, 'items');
+      var itemHtml = items.length === 0 ?
+        '<div style="grid-column: 1/-1; color: var(--text-dim); font-size: 13px; padding: 16px;">No items saved.</div>' :
+        items.map(function(it, idx) {
+          return '<div class="campaign-resource-card" onclick="showResourceDetail(\'item\', ' + idx + ')">' +
+            '<div class="campaign-resource-type">Item</div>' +
+            '<div class="campaign-resource-name">' + escapeHtml(it.name || 'Unnamed') + '</div>' +
+            '<div class="campaign-resource-meta">' + (it.rarity || 'Unspecified') + ' · ' + (it.type || 'Item') + '</div>' +
+          '</div>';
+        }).join('');
+      document.getElementById('campaignItemsList').innerHTML = itemHtml;
+
+      // Maps
+      var maps = loadCampaignResources(cid, 'maps');
+      var mapHtml = maps.length === 0 ?
+        '<div style="grid-column: 1/-1; color: var(--text-dim); font-size: 13px; padding: 16px;">No maps saved.</div>' :
+        maps.map(function(m, idx) {
+          return '<div class="campaign-resource-card" onclick="showResourceDetail(\'map\', ' + idx + ')">' +
+            '<div class="campaign-resource-type">Map</div>' +
+            '<div class="campaign-resource-name">' + escapeHtml(m.name || 'Unnamed') + '</div>' +
+            '<div class="campaign-resource-meta">Location: ' + (m.location || 'Unknown') + '</div>' +
+          '</div>';
+        }).join('');
+      document.getElementById('campaignMapsList').innerHTML = mapHtml;
+    }
+
+    function openAddCampaignMonsterModal() {
+      alert('Monster addition coming soon! You can add monsters to encounters, and they will be saved to your campaign.');
+    }
+    function openAddCampaignNPCModal() {
+      alert('NPC addition coming soon! You can create custom NPCs and save them to your campaign.');
+    }
+    function openAddCampaignItemModal() {
+      alert('Item addition coming soon! Create homebrew items and save them to your campaign.');
+    }
+    function openAddCampaignMapModal() {
+      alert('Map management coming soon! Associate maps with locations in your campaign.');
+    }
+
+    function showResourceDetail(type, idx) {
+      alert('Resource detail view coming soon!');
+    }
+
+    function expandAllResources() {
+      alert('Resource expansion coming soon!');
+    }
+
+    // ═══════════════════════════════
+    // CAMPAIGN IDEA GENERATOR
+    // ═══════════════════════════════
+    var IDEA_DATA = {
+      // ── Plot Hooks by tone ──
+      plots: {
+        dark: [
+          { title: 'The Fading Vigil', body: 'A paladin order that has protected the region for centuries is dying — literally. Their members age decades overnight. The source is a parasitic entity feeding on their oaths. The party must find the entity before the last paladin falls and the wards collapse.', tags: ['undead','oath','corruption'] },
+          { title: 'Blood Tithe', body: 'A prosperous village pays a secret monthly tribute — not gold, but memories. The collector is a mind flayer operating through a charming mayor. Villagers don\'t remember their children\'s names. The party arrives when someone finally notices the gaps.', tags: ['aberration','mind control','secrets'] },
+          { title: 'The Chain Below', body: 'Earthquakes reveal a massive chain, each link the size of a house, descending into the earth. Something is pulling it taut from below. Ancient texts say it binds a primordial being — and three links have already snapped.', tags: ['primordial','apocalypse','dungeon'] },
+          { title: 'Hollow Saints', body: 'The statues in the cathedral have begun weeping real blood. Investigation reveals the saints were never holy — they were powerful warlocks whose patrons are now calling in debts through the stone.', tags: ['warlock','religion','horror'] },
+          { title: 'The Last Harvest', body: 'A blight is spreading from a single dead tree at the center of a once-fertile valley. The tree was planted over the grave of a druid who was betrayed by the village. She\'s not dead — she\'s been dreaming her revenge for two hundred years.', tags: ['druid','nature','revenge'] }
+        ],
+        heroic: [
+          { title: 'The Sky Forge Ignites', body: 'A legendary dwarven forge, dormant for a millennium atop the highest peak, has roared back to life. Its flame is visible for hundreds of miles. Nations race to claim it, but the forge has its own guardian — and its own purpose. It\'s forging something on its own.', tags: ['dwarf','artifact','mountains'] },
+          { title: 'Tournament of Fates', body: 'Every century, champions from across the realms compete in a grand tournament where the winner receives a single wish from the gods. This time, a prophecy says the winner will accidentally end the world — unless the right champion wins.', tags: ['tournament','prophecy','gods'] },
+          { title: 'The Dragon\'s Confession', body: 'An ancient gold dragon lands in the capital and surrenders, demanding to be put on trial for crimes committed in another age. What it reveals could shatter alliances — but the dragon insists the truth must come out before a greater threat arrives.', tags: ['dragon','diplomacy','truth'] },
+          { title: 'Siege of the Silver Gate', body: 'The last free city is under siege by an army that should not exist — soldiers from a nation destroyed a century ago, perfectly preserved and marching in formation. They want one thing: the artifact that destroyed their homeland, so they can undo it.', tags: ['war','time','artifact'] },
+          { title: 'The Peacekeeper\'s Heir', body: 'A legendary hero who united the warring kingdoms died without naming a successor. Three claimants have emerged, each with a piece of the hero\'s legendary weapon. Civil war looms unless someone can broker peace — or find the true heir.', tags: ['politics','legacy','quest'] }
+        ],
+        mystery: [
+          { title: 'The Vanishing Quarter', body: 'Every full moon, an entire city district disappears for one night. Residents return at dawn with no memory but strange injuries. The party is hired to stay in the district during the next vanishing — and they discover it\'s being pulled into the Shadowfell.', tags: ['shadowfell','investigation','urban'] },
+          { title: 'Letters from the Dead', body: 'A renowned detective has been murdered, but her research notes keep appearing on her desk each morning — written in fresh ink, in her handwriting. The notes lead to a conspiracy she was about to expose, and someone is killing everyone mentioned.', tags: ['murder','conspiracy','ghost'] },
+          { title: 'The False Prophet', body: 'A new religious figure is performing genuine miracles — healing the sick, feeding the hungry. But the divine power isn\'t coming from any known god. Clerics of every faith sense something deeply wrong. The miracles are real, but the source is aberrant.', tags: ['religion','aberration','deception'] },
+          { title: 'Echoes of Tomorrow', body: 'People in a coastal town are finding messages in bottles washed ashore — written in their own handwriting, dated one year in the future, describing a catastrophe. The messages contradict each other. Someone is manipulating time to manufacture a specific outcome.', tags: ['time','coastal','prophecy'] },
+          { title: 'The Masquerade Never Ends', body: 'A noble held a masquerade ball three nights ago. The guests are still dancing, unable to stop, unable to remove their masks. Each mask is slowly changing to reflect the wearer\'s darkest secret — and the masks are hungry.', tags: ['fey','curse','social'] }
+        ],
+        whimsical: [
+          { title: 'The Great Soup Incident', body: 'A halfling chef has accidentally created a soup so delicious that it has achieved sentience. The Soup (as it insists on being called) is rolling through the countryside in its cauldron, gathering followers and demanding a kingdom of its own.', tags: ['halfling','food','comedy'] },
+          { title: 'The Bard\'s Last Song', body: 'A legendary bard wrote a song so catchy that anyone who hears it can\'t stop humming it. The song is spreading like a plague across the land. It\'s not harmful — just incredibly annoying. The bard is hiding from the mob who wants him to write an "un-song."', tags: ['bard','music','curse'] },
+          { title: 'Chickens of Destiny', body: 'A wizard polymorphed five ancient dragons into chickens as a prank centuries ago. The spell is wearing off. Very slowly. The chickens now breathe tiny puffs of flame and are roughly the size of horses. They\'re also extremely irritable.', tags: ['dragon','polymorph','farm'] },
+          { title: 'The Map That Maps Itself', body: 'A cartographer created a map that updates in real time. The problem: it\'s showing locations that don\'t exist yet — including a massive dungeon forming directly beneath the party\'s favorite tavern, scheduled to "arrive" in three days.', tags: ['map','time','dungeon'] },
+          { title: 'Union of Mimics', body: 'The mimics in the local dungeon have organized a labor union. They refuse to attack adventurers until their demands are met: better dungeon lighting, more varied diets, and dental coverage. The dungeon boss is furious and hires the party to negotiate.', tags: ['mimic','dungeon','negotiation'] }
+        ],
+        horror: [
+          { title: 'The House Remembers', body: 'A mansion inherited by a party member rearranges itself when no one is looking. Rooms appear that don\'t match the floor plan. The walls sometimes breathe. The previous owner didn\'t die — the house absorbed them, and it\'s still hungry.', tags: ['haunted','house','survival'] },
+          { title: 'Skin Deep', body: 'People in a village are finding perfect copies of themselves — standing at the edge of the forest, smiling, waiting. The copies don\'t attack. They just... wait. Anyone who touches their copy merges with it and something else walks back into town wearing their face.', tags: ['doppelganger','forest','body horror'] },
+          { title: 'The Bleeding Stars', body: 'The stars are going out, one by one. Each extinction corresponds to the death of a specific bloodline. Someone is conducting a ritual of cosmic scale, erasing families from existence. The party discovers their lineage is connected to one of the remaining stars.', tags: ['cosmic','ritual','bloodline'] },
+          { title: 'It Follows the Music', body: 'A music box plays a tune that only one person can hear at a time. That person has exactly three days before something comes for them. The only way to survive is to pass the music box to someone else. The party finds it in a dead adventurer\'s pack.', tags: ['curse','time limit','survival'] },
+          { title: 'The Friendly Village', body: 'A village is impossibly perfect — everyone is happy, well-fed, and welcoming. No one ever leaves. Detect magic reveals nothing. The truth: the village exists in a pocket dimension created by a lonely arch-fey who "collects" happy families.', tags: ['fey','pocket dimension','false paradise'] }
+        ],
+        political: [
+          { title: 'The Ambassador\'s Dilemma', body: 'Two allied nations are on the brink of war over a border dispute. The party is asked to serve as neutral arbitrators. Both sides have legitimate claims — and both have dark secrets they\'ll kill to protect. The real threat is a third nation hoping they\'ll destroy each other.', tags: ['diplomacy','war','deception'] },
+          { title: 'Crown of Whispers', body: 'The king hears voices no one else can — and he\'s been making brilliant policy decisions because of them. The voices belong to a cabal of liches who are slowly steering the kingdom toward a specific magical catastrophe that will fuel their ascension.', tags: ['lich','royalty','manipulation'] },
+          { title: 'The Guild War', body: 'The thieves\' guild and the merchants\' guild have declared open war in the city streets. The city guard is compromised — half are on the thieves\' payroll, half are merchant investors. The party must choose a side or find a way to force peace before the city burns.', tags: ['urban','faction','economy'] },
+          { title: 'Succession Crisis', body: 'The queen has three heirs, each supported by a powerful faction. The eldest is wise but bound to a dark pact. The middle child is beloved but secretly a changeling. The youngest is genuine but woefully inexperienced. The queen has days to live.', tags: ['royalty','succession','choices'] },
+          { title: 'The Treaty of Ashes', body: 'A peace treaty signed fifty years ago is about to expire. Hidden within its clauses is a magical binding — if the treaty lapses, a sealed evil is released. The original signatories are all dead, and their descendants disagree on whether to renew it.', tags: ['treaty','history','consequences'] }
+        ],
+        exploration: [
+          { title: 'The Living Labyrinth', body: 'Deep in uncharted jungle, explorers report a structure that grows. Walls sprout like roots, corridors branch like rivers. At its center pulses something alive — the labyrinth IS a creature, and exploring it means walking through its organs.', tags: ['dungeon','jungle','aberration'] },
+          { title: 'Cartographer\'s Bounty', body: 'A wealthy patron offers a fortune for a map of "the place between places" — the transitional space travelers pass through during teleportation. The catch: to map it, you have to be conscious during the transition, which is reportedly maddening.', tags: ['planar','mapping','magic'] },
+          { title: 'The Sunken Archive', body: 'A great library sank beneath the waves centuries ago. Its preservation magic still holds — there\'s breathable air inside, but the ocean has compressed it. Time moves differently within. A day inside is a year outside.', tags: ['underwater','library','time'] },
+          { title: 'Sky Islands Drift', body: 'Chunks of land are breaking free from the earth and floating skyward. Each carries its own ecosystem, settlements, and dangers. They\'re drifting toward each other, forming something — a new continent in the sky? A prison for something above?', tags: ['sky','islands','mystery'] },
+          { title: 'The Frozen Moment', body: 'In the far north, the party discovers a battlefield frozen in time — soldiers mid-swing, spells mid-flight, a dragon mid-roar. At the epicenter is a wizard holding a cracked hourglass. If the hourglass shatters fully, the battle resumes — and it was world-ending.', tags: ['arctic','time','battlefield'] }
+        ]
+      },
+
+      // ── Encounter ideas ──
+      encounters: [
+        { title: 'Ambush at the Crossing', body: 'Bandits have collapsed a bridge, funneling travelers through a narrow ravine where archers wait above. The twist: the bandits are desperate refugees from a plague village, trying to gather enough gold for a cure.', tags: ['moral choice','combat','bridge'] },
+        { title: 'The Crying Cavern', body: 'A cave system echoes with what sounds like weeping. Inside, a young dragon is trapped in a magical cage. Freeing it earns its gratitude — or its hunger. The cage was placed by a now-dead wizard whose notes warn: "Do NOT release it."', tags: ['dragon','dungeon','choice'] },
+        { title: 'Market Day Mayhem', body: 'During a bustling market, a summoning circle hidden beneath the cobblestones activates. Demons pour through while vendors and shoppers scatter. The circle is feeding on the crowd\'s panic — the calmer the party keeps people, the weaker the demons become.', tags: ['urban','demons','creative solution'] },
+        { title: 'The Toll Bridge Troll', body: 'A troll guards a bridge, but unlike most trolls, this one is a surprisingly effective bureaucrat. It demands toll in the form of riddles, stories, or rare ingredients. Combat is an option, but the troll has powerful allies hidden nearby.', tags: ['social','troll','negotiation'] },
+        { title: 'Shifting Sands', body: 'The desert terrain itself is the enemy — sinkholes, sand elementals, and a ruins half-buried that shifts with the wind. The encounter changes every round as sand reveals and conceals terrain, enemies, and treasure.', tags: ['desert','dynamic terrain','elementals'] },
+        { title: 'The Haunted Battlefield', body: 'Crossing an ancient battlefield at night, the party is caught in a spectral replay of the original battle. Ghost soldiers mistake them for enemies. Defeating the ghosts means nothing — they reform. The party must find and complete the battle\'s unfinished objective to end the loop.', tags: ['undead','puzzle','battlefield'] },
+        { title: 'Fungal Communion', body: 'A vast underground mushroom forest is connected by a mycelium network that acts as a hive mind. It\'s not hostile — until someone steps on the wrong mushroom. Then the entire forest attacks in coordinated waves, adapted to what it learned from observing the party.', tags: ['underdark','fungus','adaptive enemy'] },
+        { title: 'The False Floor', body: 'A dungeon room that appears empty is actually a massive mimic. The floor, walls, and ceiling are all parts of the creature. It doesn\'t attack immediately — it waits until the party is in the center, then slowly begins to digest.', tags: ['mimic','dungeon','trap'] }
+      ],
+
+      // ── NPC concepts ──
+      npcs: [
+        { title: 'Vex the Reclaimer', body: 'A warforged bounty hunter who only pursues stolen goods, never people. Speaks in precise, clipped sentences. Carries a ledger of every item they\'ve ever returned. Secretly building a collection of items no one has claimed — including several dangerous artifacts.', tags: ['warforged','bounty hunter','artifacts'] },
+        { title: 'Grandmother Ember', body: 'An elderly tiefling who runs a bakery that serves as a front for an information network. Her pastries are legendary, and her prices for secrets are measured in favors, not gold. She knows everything — including things she shouldn\'t.', tags: ['tiefling','information','bakery'] },
+        { title: 'The Painted Knight', body: 'A knight whose armor is covered in painted murals depicting their greatest failures, not victories. Each painting is enchanted — touching one shows the viewer the memory. The knight seeks redemption through helping others avoid similar mistakes.', tags: ['knight','redemption','enchanted'] },
+        { title: 'Inkwell', body: 'A sentient spellbook that has possessed a willing host. The host and book share the body, switching control mid-sentence. The book is ancient and knowledgeable but arrogant; the host is kind but struggling with the arrangement.', tags: ['wizard','possession','two personalities'] },
+        { title: 'Captain Lastlight', body: 'A ghost pirate whose ship sails at dusk. They don\'t attack the living — they ferry the recently dead to whatever afterlife awaits them. They\'ll trade passage (or information about the dead) for objects that remind them of their mortal life.', tags: ['ghost','pirate','ferry'] },
+        { title: 'Moss', body: 'A firbolg hermit who has lived alone so long they\'ve developed the ability to speak with plants but have forgotten how to speak with people. They communicate through elaborate gestures, flower arrangements, and the occasional burst of tears or laughter.', tags: ['firbolg','hermit','nature'] },
+        { title: 'The Tax Collector', body: 'A surprisingly dangerous halfling bureaucrat backed by the full force of the crown. Polite, unflappable, and absolutely relentless. Has survived twelve assassination attempts through a combination of luck, cleverness, and a +3 abacus they use as a weapon.', tags: ['halfling','government','comedy'] },
+        { title: 'Reverie', body: 'An elf who was cursed to forget one memory every time they sleep. They\'ve been awake for three years using magic and alchemy. They\'re brilliant but deteriorating fast, and the thing they\'re desperately trying to remember might save — or doom — the realm.', tags: ['elf','curse','memory'] }
+      ],
+
+      // ── Location ideas ──
+      locations: [
+        { title: 'The Weeping Spire', body: 'A tower that appears only during rainstorms, its stones perpetually wet with tears. Inside, each floor contains a preserved moment of grief from history — a museum of sorrow curated by a being that feeds on despair. The top floor holds a cure for any emotional wound.', tags: ['tower','emotion','rain'] },
+        { title: 'Thornmarket', body: 'An underground black market built inside the root system of an enormous dead tree. Vendors set up shop in hollowed-out roots. The deeper you go, the more dangerous (and valuable) the goods. The very bottom sells things that shouldn\'t exist.', tags: ['market','underground','criminal'] },
+        { title: 'The Glass Desert', body: 'A vast expanse of fused sand — the aftermath of an ancient magical war. Beneath the glass surface, perfectly preserved ruins are visible but unreachable. Recently, cracks have appeared, and things from below are trying to get out.', tags: ['desert','ruins','ancient magic'] },
+        { title: 'Roothold', body: 'A dwarven city built not in mountains but in the root system of a colossal tree. The tree died centuries ago but the roots remain, petrified into stone harder than granite. The city\'s deepest areas reach the tree\'s taproot, where something still pulses with life.', tags: ['dwarf','city','nature'] },
+        { title: 'The Shifting Library', body: 'A library where the bookshelves rearrange themselves based on what the reader most needs to find — or most fears discovering. The librarian is an aboleth who has been trapped here for millennia, building the collection by extracting books from visitors\' memories.', tags: ['library','aboleth','knowledge'] },
+        { title: 'Candlekeep-on-the-Waves', body: 'A mobile fortress-monastery built on the back of a dragon turtle. The monks study navigation and prophecy, and the turtle follows ley lines across the ocean. Once per century it dives, and the monastery must seal itself for the descent to an underwater nexus.', tags: ['ocean','monastery','dragon turtle'] }
+      ],
+
+      // ── Plot twists ──
+      twists: [
+        { title: 'The patron who hired the party is the BBEG\'s puppet', body: 'Everything the party has accomplished has been advancing the villain\'s plan. Their victories were necessary components of a ritual — each "quest" was actually a step in an elaborate summoning.', tags: ['betrayal','manipulation'] },
+        { title: 'The villain is from the future', body: 'The antagonist has already seen the apocalypse — they\'re trying to PREVENT it, but their methods are monstrous. They\'ve tried diplomatic approaches in other timelines. This is their last, most desperate attempt.', tags: ['time travel','moral gray'] },
+        { title: 'The party has already failed', body: 'The catastrophe they\'re trying to prevent happened a week ago. They\'ve been operating in a time loop maintained by an ally who is burning through their life force to give the party "one more try." This is attempt #47.', tags: ['time loop','urgency'] },
+        { title: 'The dead NPC ally isn\'t dead', body: 'The beloved NPC who "died" sacrificing themselves was actually pulled into another plane. They\'ve been surviving there, but the experience has changed them — not necessarily for the better.', tags: ['resurrection','changed'] },
+        { title: 'Two villains are the same person', body: 'The BBEG and the party\'s most helpful ally are the same being, split in two by a magical accident. Neither is aware of the other. Reuniting them could create someone good, evil, or entirely new.', tags: ['identity','split personality'] },
+        { title: 'The quest item is sentient and evil', body: 'The artifact everyone is seeking is actually a trapped entity that WANTS to be found. Each "guardian" protecting it was actually a warden keeping it contained. The party has been breaking through prison security.', tags: ['artifact','imprisoned evil'] },
+        { title: 'The monsters were people', body: 'The creatures the party has been fighting were once the population of a missing settlement, transformed by a curse. Every monster slain is a life that could have been saved with the right magic.', tags: ['curse','moral weight'] },
+        { title: 'The real threat is what the villain was holding back', body: 'Defeating the antagonist removes the only thing keeping a far worse threat in check. The villain knew this and chose to be the lesser evil. Now the party must fill that role — or find another way.', tags: ['consequences','escalation'] }
+      ],
+
+      // ── Magic items / loot ──
+      items: [
+        { title: 'Blade of Echoing Strikes', body: 'A longsword that remembers its last three attacks. Once per day, the wielder can command it to repeat all three strikes simultaneously against the current target. If the original target and current target are the same creature, the echoed strikes deal double damage.', tags: ['weapon','longsword','action economy'] },
+        { title: 'Cloak of the Understory', body: 'A cloak woven from living moss. While wearing it in natural terrain, the wearer can meld into any plant larger than themselves as an action. They can see and hear from the plant but cannot move or act. The cloak slowly heals the wearer while melded (1 HP per minute).', tags: ['cloak','stealth','nature'] },
+        { title: 'Hourglass of Borrowed Time', body: 'When shattered (one use), freezes time for everyone except the user for 12 seconds (2 rounds). However, the user ages one year for every round they act in frozen time. The sand reforms into a new hourglass in 1d100 days at a random location.', tags: ['time','consumable','cost'] },
+        { title: 'The Gossip Stone', body: 'A smooth river stone that whispers secrets it has overheard. Once attuned, it repeats the last conversation held within 30 feet of it, but only the parts that the speakers wished they hadn\'t said. Useful for investigation — dangerous for friendships.', tags: ['wondrous','social','investigation'] },
+        { title: 'Ironwood Sentinel Shield', body: 'A shield carved from ironwood that contains the spirit of a treant. Once per day, the shield can be planted in the ground, where it grows into a stationary treant guardian for 10 minutes. The treant has the wielder\'s AC and half their maximum HP.', tags: ['shield','treant','summoning'] },
+        { title: 'Quill of True Contracts', body: 'Any agreement written with this quill becomes magically binding. Breaking the terms inflicts a curse chosen at the time of signing. The quill refuses to write false names and cannot be used to write fiction — only binding truth.', tags: ['wondrous','social','binding'] },
+        { title: 'Lantern of Lost Souls', body: 'This lantern glows with pale blue light and reveals invisible creatures, hidden doors, and illusions within its 30-foot radius. However, it also attracts the attention of nearby undead, who are drawn to its light like moths. Ghosts may appear to ask for help resolving their unfinished business.', tags: ['lantern','detection','undead'] },
+        { title: 'Boots of the Paced Hunt', body: 'These boots never let the wearer lose a trail. Once attuned and shown a footprint, the boots glow faintly in the direction of the creature that made it, regardless of distance. The glow intensifies as you get closer. The boots cannot track creatures that fly or teleport.', tags: ['boots','tracking','ranger'] }
+      ],
+
+      // ── Side quests / subplots ──
+      subplots: [
+        { title: 'The Rival Adventuring Party', body: 'A competing group of adventurers keeps showing up at the same locations, one step ahead or behind. They\'re not hostile — just ambitious. Over time, they become rivals, allies, or enemies depending on the party\'s choices. One of them has a personal connection to a party member.', tags: ['rivals','recurring','social'] },
+        { title: 'The Orphan\'s Burden', body: 'A child found during an adventure latches onto the party. They\'re actually the last heir to a destroyed noble house, and multiple factions want them — some to protect, some to control, some to eliminate. The child has no idea of their heritage.', tags: ['escort','heir','factions'] },
+        { title: 'Haunted by Success', body: 'A monster the party killed in an earlier adventure has a mate/parent/child that is now hunting them. It\'s intelligent, patient, and has been studying their tactics. It doesn\'t attack directly — it undermines their reputation, destroys their equipment, and isolates them.', tags: ['revenge','intelligent enemy','personal'] },
+        { title: 'The Debt', body: 'A merchant who helped the party early on calls in their favor — they need the party to deliver a sealed package to a specific location. The package is more dangerous than it appears, and the merchant has been coerced by a powerful entity.', tags: ['favor','delivery','danger'] },
+        { title: 'The Dream Plague', body: 'Party members begin sharing the same dream — a burning city, a crying child, a door that won\'t open. Each night, the dream progresses. The city is real, the child is real, and the door leads somewhere that exists between dreams and waking.', tags: ['dreams','ongoing','mystery'] },
+        { title: 'Legacy of the Fallen', body: 'The party discovers a journal belonging to a previous adventuring group that attempted the same quest and failed. Following their notes reveals shortcuts, warnings, and eventually their fate — one survivor is still alive and desperate for rescue.', tags: ['journal','history','rescue'] },
+        { title: 'The Merchant Prince\'s Game', body: 'A wealthy merchant sponsors the party but keeps adding strange conditions to their quests — bring back a specific flower, leave a coin at each checkpoint, always enter buildings with the left foot first. The conditions are components of a grand ritual the merchant doesn\'t fully understand.', tags: ['patron','ritual','manipulation'] },
+        { title: 'What the Familiar Saw', body: 'A wizard\'s familiar witnessed a murder but can\'t communicate what it saw in a way anyone understands. The familiar is traumatized and acts erratically. The party must find a way to access the familiar\'s memories before the killer strikes again.', tags: ['familiar','murder','investigation'] }
+      ],
+
+      // ── Tone modifiers for generating descriptions ──
+      toneAdjectives: {
+        dark: ['ominous', 'foreboding', 'grim', 'bleak', 'sinister', 'unsettling'],
+        heroic: ['legendary', 'glorious', 'destiny-forged', 'noble', 'triumphant', 'valiant'],
+        mystery: ['enigmatic', 'cryptic', 'elusive', 'shadowy', 'puzzling', 'concealed'],
+        whimsical: ['peculiar', 'delightful', 'absurd', 'charming', 'unexpected', 'mirthful'],
+        horror: ['dreadful', 'nightmarish', 'visceral', 'unnatural', 'suffocating', 'maddening'],
+        political: ['calculated', 'treacherous', 'nuanced', 'consequential', 'layered', 'deliberate'],
+        exploration: ['uncharted', 'wondrous', 'ancient', 'vast', 'mysterious', 'awe-inspiring']
+      },
+
+      environmentDetails: {
+        dungeon: ['crumbling stone corridors', 'flickering torchlight', 'dripping water', 'ancient runes', 'collapsed passages', 'hidden chambers'],
+        wilderness: ['dense canopy', 'overgrown trails', 'animal tracks', 'distant mountains', 'rushing streams', 'ancient standing stones'],
+        urban: ['crowded streets', 'whispered rumors', 'guild politics', 'rooftop chases', 'sewer networks', 'noble estates'],
+        coastal: ['salt-crusted docks', 'crashing waves', 'smuggler\'s coves', 'lighthouse beacons', 'sunken wrecks', 'sea caves'],
+        planar: ['reality fractures', 'impossible geometry', 'color-shifted skies', 'echoing voids', 'crystallized magic', 'shifting gravity'],
+        arctic: ['howling blizzards', 'ice caves', 'frozen lakes', 'aurora-lit skies', 'permafrost ruins', 'white dragon territory'],
+        desert: ['shifting dunes', 'mirage-haunted horizons', 'oasis settlements', 'buried temples', 'sandstorms', 'scorching sun'],
+        swamp: ['murky waters', 'twisted trees', 'will-o-wisps', 'sucking mud', 'lizardfolk villages', 'toxic fog']
+      },
+
+      levelScaling: {
+        low: { crRange: '1/4-3', rewards: 'minor magic items, local reputation, modest gold', scope: 'local threats, village-level conflicts' },
+        mid: { crRange: '4-10', rewards: 'uncommon/rare items, regional fame, significant wealth', scope: 'regional threats, city-level politics, dungeon delves' },
+        high: { crRange: '11-17', rewards: 'rare/very rare items, continental influence, substantial treasure', scope: 'kingdom-level threats, planar incursions, legendary quests' },
+        epic: { crRange: '18-30', rewards: 'very rare/legendary items, world-shaping decisions, legendary treasure', scope: 'world-ending threats, divine conflicts, multiversal stakes' }
+      }
+    };
+
+    function getCampaignContext() {
+      // Pull context from the current campaign to personalize generation
+      var ctx = { name: '', description: '', partyLevel: 'any', keywords: [], npcs: [], locations: [] };
+      if (currentCampaign) {
+        ctx.name = currentCampaign.name || '';
+        ctx.description = currentCampaign.description || '';
+        // Scan party for average level
+        if (currentCampaign.party && currentCampaign.party.length > 0) {
+          var totalLevel = 0;
+          currentCampaign.party.forEach(function(m) { totalLevel += parseInt(m.level) || 1; });
+          var avg = Math.round(totalLevel / currentCampaign.party.length);
+          if (avg <= 4) ctx.partyLevel = 'low';
+          else if (avg <= 10) ctx.partyLevel = 'mid';
+          else if (avg <= 16) ctx.partyLevel = 'high';
+          else ctx.partyLevel = 'epic';
+        }
+        // Scan session notes for keywords
+        if (currentCampaign.sessions) {
+          currentCampaign.sessions.forEach(function(s) {
+            if (s.notes) ctx.keywords.push(s.notes);
+          });
+        }
+        // Scan raw DM notes textarea
+        var rawNotes = document.getElementById('dmNotesRawInput');
+        if (rawNotes && rawNotes.value.trim()) {
+          ctx.keywords.push(rawNotes.value);
+        }
+      }
+      return ctx;
+    }
+
+    function extractThemeKeywords(ctx, userKeywords) {
+      var allText = (ctx.name + ' ' + ctx.description + ' ' + ctx.keywords.join(' ') + ' ' + userKeywords).toLowerCase();
+      var found = [];
+      var themeWords = ['undead','dragon','demon','devil','fey','aberration','elemental','celestial','fiend',
+        'forest','mountain','ocean','desert','arctic','swamp','dungeon','city','village',
+        'war','political','mystery','heist','rescue','exploration','horror','survival',
+        'curse','prophecy','artifact','betrayal','redemption','revenge','love','sacrifice',
+        'goblin','orc','elf','dwarf','tiefling','dragonborn','halfling','gnome',
+        'necromancer','lich','vampire','werewolf','beholder','mind flayer',
+        'fire','ice','lightning','shadow','nature','divine','arcane','psionic'];
+      themeWords.forEach(function(w) {
+        if (allText.indexOf(w) !== -1) found.push(w);
+      });
+      return found;
+    }
+
+    function pickRandom(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function generateCampaignIdea() {
+      var type = document.getElementById('ideaGenType').value;
+      var tone = document.getElementById('ideaGenTone').value;
+      var keywords = (document.getElementById('ideaGenKeywords').value || '').trim();
+      var level = document.getElementById('ideaGenLevel').value;
+      var env = document.getElementById('ideaGenEnvironment').value;
+
+      if (type === 'mixed') {
+        type = pickRandom(['plot','encounter','npc','location','twist','item','subplot']);
+      }
+
+      var ctx = getCampaignContext();
+      // Auto-detect level from campaign if set to auto
+      if (level === 'any' && ctx.partyLevel !== 'any') {
+        level = ctx.partyLevel;
+      }
+
+      var themeKeys = extractThemeKeywords(ctx, keywords);
+      var idea = generateIdeaByType(type, tone, themeKeys, level, env, ctx);
+
+      var outputEl = document.getElementById('ideaGenOutput');
+      outputEl.innerHTML = renderIdeaCard(idea) + outputEl.innerHTML;
+    }
+
+    function generateCampaignIdeas(count) {
+      for (var i = 0; i < count; i++) {
+        generateCampaignIdea();
+      }
+    }
+
+    function generateIdeaByType(type, tone, themeKeys, level, env, ctx) {
+      var pool, idea;
+
+      switch (type) {
+        case 'plot':
+          pool = getPlotPool(tone);
+          idea = pickRandom(pool);
+          break;
+        case 'encounter':
+          idea = pickRandom(IDEA_DATA.encounters);
+          break;
+        case 'npc':
+          idea = pickRandom(IDEA_DATA.npcs);
+          break;
+        case 'location':
+          idea = pickRandom(IDEA_DATA.locations);
+          break;
+        case 'twist':
+          idea = pickRandom(IDEA_DATA.twists);
+          break;
+        case 'item':
+          idea = pickRandom(IDEA_DATA.items);
+          break;
+        case 'subplot':
+          idea = pickRandom(IDEA_DATA.subplots);
+          break;
+        default:
+          pool = getPlotPool(tone);
+          idea = pickRandom(pool);
+          type = 'plot';
+      }
+
+      // Enrich with campaign context
+      var enriched = Object.assign({}, idea);
+      enriched.type = type;
+      enriched.tags = (idea.tags || []).slice();
+
+      // Add environment flavor
+      if (env && env !== 'any' && IDEA_DATA.environmentDetails[env]) {
+        var envDetail = pickRandom(IDEA_DATA.environmentDetails[env]);
+        enriched.envHint = 'Setting: ' + envDetail;
+        enriched.tags.push(env);
+      }
+
+      // Add level scaling info
+      if (level && level !== 'any' && IDEA_DATA.levelScaling[level]) {
+        var ls = IDEA_DATA.levelScaling[level];
+        enriched.levelHint = 'Party Level: ' + level.charAt(0).toUpperCase() + level.slice(1) + ' (' + ls.crRange + ') — ' + ls.scope;
+        enriched.rewardHint = 'Suggested Rewards: ' + ls.rewards;
+      }
+
+      // Add tone adjective if not matching
+      if (tone && tone !== 'any' && IDEA_DATA.toneAdjectives[tone]) {
+        enriched.toneHint = 'Tone: ' + pickRandom(IDEA_DATA.toneAdjectives[tone]);
+      }
+
+      // Add campaign connection if we have context
+      if (ctx.name) {
+        enriched.campaignHint = 'Campaign: ' + escapeHtml(ctx.name);
+      }
+
+      // Match theme keywords to idea tags for relevance
+      if (themeKeys.length > 0) {
+        var matchingKeys = themeKeys.filter(function(k) {
+          return (idea.tags || []).some(function(t) { return t.toLowerCase().indexOf(k) !== -1; });
+        });
+        if (matchingKeys.length > 0) {
+          enriched.themeMatch = 'Theme match: ' + matchingKeys.join(', ');
+        }
+      }
+
+      return enriched;
+    }
+
+    function getPlotPool(tone) {
+      if (tone && tone !== 'any' && IDEA_DATA.plots[tone]) {
+        return IDEA_DATA.plots[tone];
+      }
+      // Combine all tones
+      var all = [];
+      Object.keys(IDEA_DATA.plots).forEach(function(k) {
+        all = all.concat(IDEA_DATA.plots[k]);
+      });
+      return all;
+    }
+
+    function renderIdeaCard(idea) {
+      var typeLabel = {
+        plot: 'Plot Hook', encounter: 'Encounter', npc: 'NPC Concept',
+        location: 'Location', twist: 'Plot Twist', item: 'Magic Item', subplot: 'Side Quest'
+      };
+
+      var html = '<div class="idea-card ' + idea.type + '">';
+      html += '<div class="idea-card-type">' + (typeLabel[idea.type] || 'Idea') + '</div>';
+      html += '<div class="idea-card-title">' + escapeHtml(idea.title) + '</div>';
+      html += '<div class="idea-card-body">' + escapeHtml(idea.body) + '</div>';
+
+      // Context hints
+      var hints = [];
+      if (idea.envHint) hints.push(idea.envHint);
+      if (idea.levelHint) hints.push(idea.levelHint);
+      if (idea.rewardHint) hints.push(idea.rewardHint);
+      if (idea.toneHint) hints.push(idea.toneHint);
+      if (idea.themeMatch) hints.push(idea.themeMatch);
+
+      if (hints.length > 0) {
+        html += '<div style="margin-top:10px;font-size:11px;color:var(--text-muted);line-height:1.6;">';
+        hints.forEach(function(h) { html += '<div>' + escapeHtml(h) + '</div>'; });
+        html += '</div>';
+      }
+
+      // Tags
+      if (idea.tags && idea.tags.length > 0) {
+        html += '<div class="idea-card-tags">';
+        idea.tags.forEach(function(t) { html += '<span class="idea-tag">' + escapeHtml(t) + '</span>'; });
+        html += '</div>';
+      }
+
+      // Actions
+      html += '<div class="idea-card-actions">';
+      html += '<button class="idea-action-btn" onclick="copyIdeaToClipboard(this)">Copy</button>';
+      html += '<button class="idea-action-btn" onclick="addIdeaToNotes(this)">Add to Notes</button>';
+      html += '<button class="idea-action-btn" onclick="this.closest(\'.idea-card\').remove()">Dismiss</button>';
+      html += '</div>';
+      html += '</div>';
+      return html;
+    }
+
+    function copyIdeaToClipboard(btn) {
+      var card = btn.closest('.idea-card');
+      var title = card.querySelector('.idea-card-title').textContent;
+      var body = card.querySelector('.idea-card-body').textContent;
+      var type = card.querySelector('.idea-card-type').textContent;
+      var text = type + ': ' + title + '\n\n' + body;
+
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(function() {
+          btn.textContent = 'Copied!';
+          setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+        });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta);
+        btn.textContent = 'Copied!';
+        setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+      }
+    }
+
+    function addIdeaToNotes(btn) {
+      var card = btn.closest('.idea-card');
+      var title = card.querySelector('.idea-card-title').textContent;
+      var body = card.querySelector('.idea-card-body').textContent;
+      var type = card.querySelector('.idea-card-type').textContent;
+      var textarea = document.getElementById('dmNotesRawInput');
+      var existing = textarea.value;
+      var addition = '\n\n--- Generated ' + type + ' ---\n' + title + '\n' + body;
+      textarea.value = existing + addition;
+      btn.textContent = 'Added!';
+      setTimeout(function() { btn.textContent = 'Add to Notes'; }, 1500);
+    }
+
+    function generateFullSessionOutline() {
+      var tone = document.getElementById('ideaGenTone').value;
+      var keywords = (document.getElementById('ideaGenKeywords').value || '').trim();
+      var level = document.getElementById('ideaGenLevel').value;
+      var env = document.getElementById('ideaGenEnvironment').value;
+      var ctx = getCampaignContext();
+      if (level === 'any' && ctx.partyLevel !== 'any') level = ctx.partyLevel;
+      var themeKeys = extractThemeKeywords(ctx, keywords);
+
+      // Generate a full session with multiple linked ideas
+      var plot = generateIdeaByType('plot', tone, themeKeys, level, env, ctx);
+      var enc1 = generateIdeaByType('encounter', tone, themeKeys, level, env, ctx);
+      var enc2 = generateIdeaByType('encounter', tone, themeKeys, level, env, ctx);
+      var npc = generateIdeaByType('npc', tone, themeKeys, level, env, ctx);
+      var loc = generateIdeaByType('location', tone, themeKeys, level, env, ctx);
+      var twist = generateIdeaByType('twist', tone, themeKeys, level, env, ctx);
+      var item = generateIdeaByType('item', tone, themeKeys, level, env, ctx);
+
+      var campaignName = (ctx.name || 'Your Campaign');
+      var sessionNum = currentCampaign && currentCampaign.sessions ? currentCampaign.sessions.length + 1 : 1;
+
+      var html = '<div class="campaign-doc" style="margin-bottom: 20px;">';
+      html += '<div class="campaign-doc-title">Session ' + sessionNum + ' Outline</div>';
+      html += '<div class="campaign-doc-subtitle">' + escapeHtml(campaignName) + ' — Generated Session Framework</div>';
+
+      html += '<div class="campaign-doc-session">Opening Hook</div>';
+      html += '<div class="campaign-doc-text"><strong>' + escapeHtml(plot.title) + '</strong> — ' + escapeHtml(plot.body) + '</div>';
+
+      html += '<div class="campaign-doc-session">Key Location</div>';
+      html += '<div class="campaign-doc-location"><div class="campaign-doc-location-name">' + escapeHtml(loc.title) + '</div>';
+      html += '<div class="campaign-doc-text">' + escapeHtml(loc.body) + '</div></div>';
+
+      html += '<div class="campaign-doc-session">Important NPC</div>';
+      html += '<div class="campaign-doc-npc"><div class="campaign-doc-npc-name">' + escapeHtml(npc.title) + '</div>';
+      html += '<div class="campaign-doc-text">' + escapeHtml(npc.body) + '</div></div>';
+
+      html += '<div class="campaign-doc-session">Encounter 1: Early Challenge</div>';
+      html += '<div class="campaign-doc-encounter"><div class="campaign-doc-text"><strong>' + escapeHtml(enc1.title) + '</strong> — ' + escapeHtml(enc1.body) + '</div></div>';
+
+      html += '<div class="campaign-doc-session">Mid-Session Twist</div>';
+      html += '<div class="campaign-doc-boxed">' + escapeHtml(twist.title) + ' — ' + escapeHtml(twist.body) + '</div>';
+
+      html += '<div class="campaign-doc-session">Encounter 2: Climax</div>';
+      html += '<div class="campaign-doc-encounter"><div class="campaign-doc-text"><strong>' + escapeHtml(enc2.title) + '</strong> — ' + escapeHtml(enc2.body) + '</div></div>';
+
+      html += '<div class="campaign-doc-session">Reward / Treasure</div>';
+      html += '<div class="campaign-doc-treasure"><div class="campaign-doc-text"><strong>' + escapeHtml(item.title) + '</strong> — ' + escapeHtml(item.body) + '</div></div>';
+
+      if (plot.levelHint) {
+        html += '<div class="campaign-doc-session">DM Notes</div>';
+        html += '<div class="campaign-doc-text" style="font-size:12px;color:var(--text-muted);">' + escapeHtml(plot.levelHint) + '</div>';
+        if (plot.rewardHint) html += '<div class="campaign-doc-text" style="font-size:12px;color:var(--text-muted);">' + escapeHtml(plot.rewardHint) + '</div>';
+      }
+
+      html += '</div>';
+
+      // Action buttons for the whole outline
+      html += '<div style="display:flex;gap:8px;margin-bottom:24px;">';
+      html += '<button class="idea-gen-btn secondary" onclick="copySessionOutline()">Copy Outline to Clipboard</button>';
+      html += '<button class="idea-gen-btn secondary" onclick="addSessionOutlineToNotes()">Add to Notes</button>';
+      html += '<button class="idea-gen-btn secondary" onclick="printSessionOutline()">Print Outline</button>';
+      html += '</div>';
+
+      var outputEl = document.getElementById('ideaGenOutput');
+      outputEl.innerHTML = html + outputEl.innerHTML;
+    }
+
+    function copySessionOutline() {
+      var doc = document.querySelector('#ideaGenOutput .campaign-doc');
+      if (!doc) return;
+      var text = doc.innerText;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(function() { alert('Outline copied to clipboard!'); });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert('Outline copied to clipboard!');
+      }
+    }
+
+    function addSessionOutlineToNotes() {
+      var doc = document.querySelector('#ideaGenOutput .campaign-doc');
+      if (!doc) return;
+      var textarea = document.getElementById('dmNotesRawInput');
+      textarea.value = textarea.value + '\n\n' + doc.innerText;
+      alert('Session outline added to your notes! Click "Format as Document" to see it styled.');
+    }
+
+    function printSessionOutline() {
+      var doc = document.querySelector('#ideaGenOutput .campaign-doc');
+      if (!doc) return;
+      var printWin = window.open('', '', 'width=800,height=600');
+      printWin.document.write('<html><head><title>Session Outline</title><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet"><style>' +
+        'body { background: white; color: #333; font-family: "Spectral", serif; margin: 0; padding: 30px; max-width: 800px; margin: 0 auto; }' +
+        '.campaign-doc-title { font-family: "Cinzel", serif; font-size: 28px; text-align: center; color: #c0392b; margin-bottom: 8px; }' +
+        '.campaign-doc-subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 24px; border-bottom: 1px solid #c0392b; padding-bottom: 16px; }' +
+        '.campaign-doc-session { font-family: "Cinzel", serif; font-size: 16px; color: #c0392b; border-bottom: 2px solid #c0392b; padding-bottom: 4px; margin: 24px 0 12px; }' +
+        '.campaign-doc-boxed { background: #fff0f0; border-left: 3px solid #c0392b; padding: 12px 16px; margin: 12px 0; font-style: italic; }' +
+        '.campaign-doc-npc, .campaign-doc-location, .campaign-doc-encounter, .campaign-doc-treasure { background: #f9f9f9; border: 1px solid #ddd; padding: 12px 16px; margin: 10px 0; }' +
+        '.campaign-doc-npc-name, .campaign-doc-location-name { font-family: "Cinzel", serif; font-size: 14px; color: #c0392b; margin-bottom: 4px; font-weight: bold; }' +
+        '.campaign-doc-text { line-height: 1.7; margin: 6px 0; }' +
+        '</style></head><body>' + doc.outerHTML + '</body></html>');
+      printWin.document.close();
+      setTimeout(function() { printWin.print(); }, 250);
+    }
+
+    function clearIdeaOutput() {
+      document.getElementById('ideaGenOutput').innerHTML = '';
+    }
 
     // UTILITY
     // ═══════════════════════════════
